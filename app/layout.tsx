@@ -5,6 +5,7 @@ import { Fragment, ReactNode } from "react";
 
 export default async (p: { children: ReactNode }) => {
   const commands = await getCommandsTree();
+  const headerHeight = "5rem";
 
   return (
     <html lang="fr">
@@ -14,11 +15,20 @@ export default async (p: { children: ReactNode }) => {
       */}
       <head />
       <body>
-        <header className="sticky top-0 bg-blue-400 z-10 h-20">
+        <header
+          className="sticky top-0 bg-blue-200 z-10"
+          style={{ height: headerHeight }}
+        >
           This is the header
         </header>
         <div className="grid grid-cols-[min-content_auto]">
-          <nav className="bg-red-400 sticky top-20 p-10 h-[calc(100vh-5rem)]">
+          <aside
+            className="bg-red-200 sticky p-10"
+            style={{
+              top: headerHeight,
+              height: `calc(100vh - ${headerHeight})`,
+            }}
+          >
             {commands.map((s) => (
               <Fragment key={s.id}>
                 <Link className="block" href={s.slug}>
@@ -35,10 +45,9 @@ export default async (p: { children: ReactNode }) => {
                 )}
               </Fragment>
             ))}
-          </nav>
-          <main className="bg-green-400">{p.children}</main>
+          </aside>
+          <main className="bg-green-200">{p.children}</main>
         </div>
-        {/* <footer></footer> */}
       </body>
     </html>
   );
