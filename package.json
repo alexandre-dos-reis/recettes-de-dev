@@ -26,6 +26,9 @@
     "zod": "^3.20.6"
   },
   "devDependencies": {
-    "@types/recursive-readdir": "^2.2.1"
+    "@types/recursive-readdir": "^2.2.1",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
   }
 }

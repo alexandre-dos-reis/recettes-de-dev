@@ -1,0 +1,135 @@
+---
+title: docker
+date: "2022-12-11"
+sort: 1
+---
+
+- Télécharge l’image depuis le hub ou repository, et la rend exécutable pour les conteneurs.
+  `$ docker pull [image]`
+- Récupère une image dans sa dernière version.
+  `$ docker pull [image]:latest`
+- Effectue une recherche avec le mot clé « nginx » et 5 étoiles en notation.
+  `$ docker search --stars=5 nginx`
+- Liste les images téléchargées.
+  `$ docker images`
+- Exécute l’image dans un conteneur, Docker se charge de la télécharger si l'image n'est pas présente.
+  `$ docker run [image]`
+- Démarre un conteneur Ubuntu en mode interactif accessible depuis le terminal avec bash.
+  `$ docker run -it ubuntu bash`
+- Démarre un conteneur en mode détaché, qui tourne en tâche de fond.
+  `$ docker run -d [image]`
+- Lance Ngnix dans un conteneur en mode détaché, et le rend accessible sur le port 88 de la machine hôte.
+  `$ docker run -d -p 88:80 nginx`
+- Lance un conteneur à partir de l’image et copie le contenu du dossier hôte vers le dossier du conteneur.
+  `$ docker run -v [dossier hôte]:[dossier conteneur] [image]`
+- Lance Ngnix dans un conteneur en mode détaché appelé Web1, redirige le port 88 de la machine hôte vers ce conteneur. Copie le contenu du dossier user1 vers le dossier html du conteneur NginX en lecture seule.
+  `$ docker run -d -p 88:80 --name Web1 -v /home/user1:/usr/share/nginx/html:ro nginx`
+- Idem pour Apache2 sur le port 89.
+  `$ docker run -d -p 89:80 --name Web2 -v /home/user1:/usr/local/apache2/htdocs/:ro httpd`
+- Lance un conteneur en démarrant le service sshd, il devient accessible via le port 2222 de l'hôte.
+  `$ docker run -d -p 2222:22 --name [nom du conteneur] [image] /usr/sbin/sshd -D`
+- Exécute une commande dans un conteneur actif en mode détaché.
+  `$ docker exec -tid [conteneur] [commande]`
+- Affiche les informations sur les conteneurs en cours d’exécution.
+  `$ docker ps`
+- Idem mais ajoute les conteneurs inactifs.
+  `$ docker ps -a`
+- Liste le réseau utilisé par Docker sur la machine hôte.
+  `$ docker network ls`
+- Arrête le conteneur en question.
+  `$ docker stop [conteneur]`
+- Démarre un conteneur arrêté.
+  `$ docker start [conteneur]`
+- Redémarre un conteneur en cours d’utilisation.
+  `$ docker restart [conteneur]`
+- Accède à un conteneur déjà démarré en mode interactif.
+  `$ docker attach [conteneur]`
+- Affiche les processus PID lancés dans le conteneur.
+  `$ docker top [conteneur]`
+- Renomme un conteneur.
+  `$ docker rename [conteneur]`
+- Force la suppression du conteneur.
+  `$ docker rm -f [conteneur]`
+- Affiche les statiques de tous les conteneurs en cours d’utilisation. CPU, mémoire, etc…
+  `$ docker stats`
+- Trouve la liste des modifications d’un conteneur par rapport à son image d'origine.
+  `$ docker diff [identifiant ou nom du conteneur]`
+- Fait persister l’état d’un conteneur en une nouvelle image.
+  `$ docker commit [identifiant ou nom du conteneur] [nom de l’image]`
+- Supprime une image.
+  `$ docker rmi [nom de l’image]`
+- Obtenir la liste des commandes pour Docker.
+  `$ docker help`
+- Obtenir de l’aide sur les options d’un commande.
+  `$ docker help [nom de la commande]`
+- Affiche les logs du conteneur, ne renvoie rien si tout se passe bien.
+  `$ docker logs [conteneur]`
+- Permet d'afficher les stats des conteneurs au format d'une table.
+  `$ docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}"`
+- Affiche les conteneurs avec leur politique de redémarrage, utile pour voir les conteneurs qui ne redémarraient pas après un crash.
+  `$ docker inspect --format "{{.HostConfig.RestartPolicy.Name}},{{.Name}},{{.Config.Image}},{{.State.Status}}" $(docker ps -aq) | column -s, -t | awk '{ if ($1 != "no") print }'`
+
+- Télécharge l’image depuis le hub ou repository, et la rend exécutable pour les conteneurs.
+  `$ docker pull [image]`
+- Récupère une image dans sa dernière version.
+  `$ docker pull [image]:latest`
+- Effectue une recherche avec le mot clé « nginx » et 5 étoiles en notation.
+  `$ docker search --stars=5 nginx`
+- Liste les images téléchargées.
+  `$ docker images`
+- Exécute l’image dans un conteneur, Docker se charge de la télécharger si l'image n'est pas présente.
+  `$ docker run [image]`
+- Démarre un conteneur Ubuntu en mode interactif accessible depuis le terminal avec bash.
+  `$ docker run -it ubuntu bash`
+- Démarre un conteneur en mode détaché, qui tourne en tâche de fond.
+  `$ docker run -d [image]`
+- Lance Ngnix dans un conteneur en mode détaché, et le rend accessible sur le port 88 de la machine hôte.
+  `$ docker run -d -p 88:80 nginx`
+- Lance un conteneur à partir de l’image et copie le contenu du dossier hôte vers le dossier du conteneur.
+  `$ docker run -v [dossier hôte]:[dossier conteneur] [image]`
+- Lance Ngnix dans un conteneur en mode détaché appelé Web1, redirige le port 88 de la machine hôte vers ce conteneur. Copie le contenu du dossier user1 vers le dossier html du conteneur NginX en lecture seule.
+  `$ docker run -d -p 88:80 --name Web1 -v /home/user1:/usr/share/nginx/html:ro nginx`
+- Idem pour Apache2 sur le port 89.
+  `$ docker run -d -p 89:80 --name Web2 -v /home/user1:/usr/local/apache2/htdocs/:ro httpd`
+- Lance un conteneur en démarrant le service sshd, il devient accessible via le port 2222 de l'hôte.
+  `$ docker run -d -p 2222:22 --name [nom du conteneur] [image] /usr/sbin/sshd -D`
+- Exécute une commande dans un conteneur actif en mode détaché.
+  `$ docker exec -tid [conteneur] [commande]`
+- Affiche les informations sur les conteneurs en cours d’exécution.
+  `$ docker ps`
+- Idem mais ajoute les conteneurs inactifs.
+  `$ docker ps -a`
+- Liste le réseau utilisé par Docker sur la machine hôte.
+  `$ docker network ls`
+- Arrête le conteneur en question.
+  `$ docker stop [conteneur]`
+- Démarre un conteneur arrêté.
+  `$ docker start [conteneur]`
+- Redémarre un conteneur en cours d’utilisation.
+  `$ docker restart [conteneur]`
+- Accède à un conteneur déjà démarré en mode interactif.
+  `$ docker attach [conteneur]`
+- Affiche les processus PID lancés dans le conteneur.
+  `$ docker top [conteneur]`
+- Renomme un conteneur.
+  `$ docker rename [conteneur]`
+- Force la suppression du conteneur.
+  `$ docker rm -f [conteneur]`
+- Affiche les statiques de tous les conteneurs en cours d’utilisation. CPU, mémoire, etc…
+  `$ docker stats`
+- Trouve la liste des modifications d’un conteneur par rapport à son image d'origine.
+  `$ docker diff [identifiant ou nom du conteneur]`
+- Fait persister l’état d’un conteneur en une nouvelle image.
+  `$ docker commit [identifiant ou nom du conteneur] [nom de l’image]`
+- Supprime une image.
+  `$ docker rmi [nom de l’image]`
+- Obtenir la liste des commandes pour Docker.
+  `$ docker help`
+- Obtenir de l’aide sur les options d’un commande.
+  `$ docker help [nom de la commande]`
+- Affiche les logs du conteneur, ne renvoie rien si tout se passe bien.
+  `$ docker logs [conteneur]`
+- Permet d'afficher les stats des conteneurs au format d'une table.
+  `$ docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}"`
+- Affiche les conteneurs avec leur politique de redémarrage, utile pour voir les conteneurs qui ne redémarraient pas après un crash.
+  `$ docker inspect --format "{{.HostConfig.RestartPolicy.Name}},{{.Name}},{{.Config.Image}},{{.State.Status}}" $(docker ps -aq) | column -s, -t | awk '{ if ($1 != "no") print }'`
