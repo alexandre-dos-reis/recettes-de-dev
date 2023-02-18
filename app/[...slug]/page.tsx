@@ -1,4 +1,5 @@
 import { getCommandBySlug, getCommandsTree } from "~/mdx/commands/functions";
+import { PageParamsProps } from "~/types/generics";
 
 export const generateStaticParams = async () => {
   let slugs: { slug: string[] }[] = [];
@@ -13,14 +14,9 @@ export const generateStaticParams = async () => {
   return slugs;
 };
 
-interface Props {
-  params: Awaited<ReturnType<typeof generateStaticParams>>[number];
-  searchParams: unknown;
-}
-
-export default async (p) => {
-  const command = await getCommandBySlug(
-    p.params.slug as Props["params"]["slug"]
-  );
+export default async ({
+  params,
+}: PageParamsProps<typeof generateStaticParams>) => {
+  const command = await getCommandBySlug(params.slug);
   return <div>{command.content}</div>;
 };
