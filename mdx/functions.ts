@@ -2,6 +2,7 @@ import { compileMDX, MDXRemoteProps } from "next-mdx-remote/rsc";
 import { promises as fs } from "fs";
 import { components } from "~/mdx/custom-mapping";
 import { z, ZodRawShape } from "zod";
+import { stat } from "node:fs/promises";
 
 export const getCompiledMdx = async (filepath: string) => {
   const raw = await fs.readFile(filepath, "utf-8");
@@ -19,17 +20,21 @@ export const getSafeCompiledMdx = async <T extends ZodRawShape>(
   filePath: string,
   zodObject: z.ZodObject<T>
 ) => {
-  const { content, frontmatter: fm } = await getCompiledMdx(filePath);
+  const { content, frontmatter: unsafeFrontmatter } = await getCompiledMdx(
+    filePath
+  );
 
-  const fmParsed = zodObject.safeParse(fm);
+  const parsedFrontmatter = zodObject.safeParse(unsafeFrontmatter);
 
-  if (!fmParsed.success) {
+  if (!parsedFrontmatter.success) {
     throw new Error(
       `There's a problem with the frontmatter definition in the ${filePath} file.`
     );
   }
 
-  const frontmatter = fmParsed.data;
+  return { content, frontmatter: parsedFrontmatter.data };
+};
 
-  return { content, frontmatter };
+export const asyncFileExists = async (path: string) => {
+  return !!(await stat(path).catch((e) => false));
 };

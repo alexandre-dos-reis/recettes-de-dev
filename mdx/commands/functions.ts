@@ -1,38 +1,38 @@
 import { z } from "zod";
-import { getSafeCompiledMdx } from "../functions";
-import { readdir, stat } from "node:fs/promises";
+import { asyncFileExists, getSafeCompiledMdx } from "../functions";
+import { readdir } from "node:fs/promises";
 
 const contentDir = "content/commands";
 
 const fmSchema = z.object({
   title: z.string(),
-  date: z.string(),
-  sort: z.number(),
+  sort: z.number().optional(),
   draft: z.boolean().optional(),
+  image: z.string().optional(),
 });
 
-interface CommandFile {
+export interface CommandFile {
   id: string;
   slug: string;
   children?: CommandFile[];
-  fm?: z.infer<typeof fmSchema>;
+  frontmatter: z.infer<typeof fmSchema>;
 }
 
-const makeCommandFile = (path: string): CommandFile => ({
+const makeCommandFile = (
+  path: string,
+  frontmatter: z.infer<typeof fmSchema>
+): CommandFile => ({
   id: path,
   slug: path
     .replace(contentDir, "")
     .replace(".mdx", "")
     .replace("/index", "")
     .substring(1),
+  frontmatter,
 });
 
 const getCommandMdx = async (pathFile: string) => {
   return await getSafeCompiledMdx(pathFile, fmSchema);
-};
-
-const asyncFileExists = async (path: string) => {
-  return !!(await stat(path).catch((e) => false));
 };
 
 const getRecursiveCommandsTree = async (directory: string) => {
@@ -45,14 +45,13 @@ const getRecursiveCommandsTree = async (directory: string) => {
         ? fullPath
         : `${fullPath}/index.mdx`;
 
-      const frontmatter = (await getCommandMdx(filename)).frontmatter;
+      const { frontmatter } = await getCommandMdx(filename);
 
       if (frontmatter.draft) {
         return acc; // The file is a draft, skipping...
       }
 
-      const command = makeCommandFile(filename);
-      command.fm = frontmatter;
+      const command = makeCommandFile(filename, frontmatter);
 
       if (command.id.endsWith("index.mdx")) {
         command.children = await getRecursiveCommandsTree(
@@ -65,7 +64,7 @@ const getRecursiveCommandsTree = async (directory: string) => {
       // The file is ready to be shown, command is valid...
       return (await acc).concat(command);
     }, Promise.resolve([] as CommandFile[]))
-  ).sort((a, b) => (a.fm?.sort || 0) - (b.fm?.sort || 0));
+  ).sort((a, b) => (a.frontmatter?.sort || 0) - (b.frontmatter?.sort || 0));
 };
 
 export const getCommandsTree = async () => {
@@ -74,15 +73,11 @@ export const getCommandsTree = async () => {
 
 export const getCommandBySlug = async (slugArray: string[]) => {
   const slug = slugArray.join("/");
-  const simpleFile = `${contentDir}/${slug}.mdx`;
+  const nonIndexFile = `${contentDir}/${slug}.mdx`;
 
-  if (slugArray.length === 1) {
-    if (await asyncFileExists(simpleFile)) {
-      return await getCommandMdx(simpleFile);
-    } else {
-      return await getCommandMdx(`${contentDir}/${slug}/index.mdx`);
-    }
-  } else {
-    return await getCommandMdx(simpleFile);
+  if (await asyncFileExists(nonIndexFile)) {
+    return await getCommandMdx(nonIndexFile);
   }
+
+  return await getCommandMdx(`${contentDir}/${slug}/index.mdx`);
 };

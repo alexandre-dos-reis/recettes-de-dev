@@ -72,7 +72,8 @@ interface LegacyCommandQuery {
 
   const commandsDirname = path.join(__dirname, "../content/commands");
 
-    
+  console.log(commandsDirname);
+
   fs.rmSync(commandsDirname, { force: true, recursive: true });
   fs.mkdirSync(commandsDirname);
 
@@ -99,7 +100,9 @@ sort: ${c.cmd_order || 1}
 title: ${c.title}
 ${c.image ? `image: ${c.image}` : ""}
 ---
+
 ${c.description}
+
 ${c.sub_commands
   .sort((a, b) => (a.sort || 1) - (b.sort || 1))
   .map(
