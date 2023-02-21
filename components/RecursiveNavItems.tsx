@@ -12,7 +12,7 @@ export const RecursiveNavItems = ({ commands }: Props) => {
       {commands.map((c) => (
         <Fragment key={c.id}>
           <Link className="block" href={c.slug}>
-            {c.frontmatter?.title}
+            {c.frontmatter.nav ?? c.frontmatter?.title}
           </Link>
           {c.children !== null && c.children?.length === 0 ? null : (
             <div className="ml-3">

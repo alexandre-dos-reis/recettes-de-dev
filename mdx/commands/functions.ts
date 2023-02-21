@@ -2,25 +2,26 @@ import { z } from "zod";
 import { asyncFileExists, getSafeCompiledMdx } from "../functions";
 import { readdir } from "node:fs/promises";
 
-const contentDir = "content/commands";
+const contentDir = "content/cli";
 
-const fmSchema = z.object({
+const frontmatterCommandSchema = z.object({
   title: z.string(),
   sort: z.number().optional(),
   draft: z.boolean().optional(),
   image: z.string().optional(),
+  nav: z.string().optional(),
 });
 
 export interface CommandFile {
   id: string;
   slug: string;
   children?: CommandFile[];
-  frontmatter: z.infer<typeof fmSchema>;
+  frontmatter: z.infer<typeof frontmatterCommandSchema>;
 }
 
 const makeCommandFile = (
   path: string,
-  frontmatter: z.infer<typeof fmSchema>
+  frontmatter: z.infer<typeof frontmatterCommandSchema>
 ): CommandFile => ({
   id: path,
   slug: path
@@ -32,7 +33,7 @@ const makeCommandFile = (
 });
 
 const getCommandMdx = async (pathFile: string) => {
-  return await getSafeCompiledMdx(pathFile, fmSchema);
+  return await getSafeCompiledMdx(pathFile, frontmatterCommandSchema);
 };
 
 const getRecursiveCommandsTree = async (directory: string) => {
@@ -68,7 +69,7 @@ const getRecursiveCommandsTree = async (directory: string) => {
 };
 
 export const getCommandsTree = async () => {
-  return await getRecursiveCommandsTree(contentDir);
+  return (await getRecursiveCommandsTree(contentDir));
 };
 
 export const getCommandBySlug = async (slugArray: string[]) => {

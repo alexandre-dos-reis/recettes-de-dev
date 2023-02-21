@@ -72,8 +72,6 @@ interface LegacyCommandQuery {
 
   const commandsDirname = path.join(__dirname, "../content/commands");
 
-  console.log(commandsDirname);
-
   fs.rmSync(commandsDirname, { force: true, recursive: true });
   fs.mkdirSync(commandsDirname);
 
@@ -84,20 +82,15 @@ interface LegacyCommandQuery {
 
   // Creating each top command folder
   commands.map(async (c) => {
-    const cmdDirPath = path.join(commandsDirname, c.tab);
+    const mdxFilePath = path.join(commandsDirname, `${c.tab}.mdx`);
 
-    if (!fs.existsSync(cmdDirPath)) {
-      fs.mkdirSync(cmdDirPath);
-    }
-
-    const indexMDXPath = path.join(cmdDirPath, "index.mdx");
-
-    if (!fs.existsSync(indexMDXPath)) {
+    if (!fs.existsSync(mdxFilePath)) {
       fs.writeFileSync(
-        indexMDXPath,
+        mdxFilePath,
         `---
-sort: ${c.cmd_order || 1}
+${c.cmd_order ? `sort: ${c.cmd_order}` : ""}
 title: ${c.title}
+${c.tab !== c.title ? `nav: ${c.tab}` : ''}
 ${c.image ? `image: ${c.image}` : ""}
 ---
 
