@@ -1,26 +1,39 @@
+"use client";
+
 import Link from "next/link";
-import { Fragment } from "react";
-import { CommandFile } from "~/mdx/commands/functions";
+import { useState } from "react";
+import { Command } from "~/mdx/commands/functions";
 
 interface Props {
-  commands: CommandFile[];
+  command: Command;
 }
 
-export const RecursiveNavItems = ({ commands }: Props) => {
+export const RecursiveNavItems = ({ command }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClick = () => {
+    setIsOpen((v) => !v);
+  };
+
   return (
-    <>
-      {commands.map((c) => (
-        <Fragment key={c.id}>
-          <Link className="block" href={c.slug}>
-            {c.frontmatter.nav ?? c.frontmatter?.title}
-          </Link>
-          {c.children !== null && c.children?.length === 0 ? null : (
-            <div className="ml-3">
-              <RecursiveNavItems commands={c.children!} />
-            </div>
-          )}
-        </Fragment>
-      ))}
-    </>
+    <div>
+      <Link
+        className="block"
+        href={command?.slug}
+        prefetch={false}
+        onClick={onClick}
+      >
+        {command?.frontmatter.nav ?? command?.frontmatter.title}
+      </Link>
+      {isOpen &&
+        command?.children?.map((c) => (
+          <div className="ml-3" key={c.id}>
+            {command.children !== null &&
+            command.children?.length === 0 ? null : (
+              <RecursiveNavItems command={c} />
+            )}
+          </div>
+        ))}
+    </div>
   );
 };

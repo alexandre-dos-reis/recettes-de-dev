@@ -1,20 +1,13 @@
 import "./globals.css";
 import { getCommandsTree } from "~/mdx/commands/functions";
-import Link from "next/link";
-import { Fragment, ReactNode } from "react";
+import { ReactNode } from "react";
 import { RecursiveNavItems } from "~/components/RecursiveNavItems";
 
 export default async (p: { children: ReactNode }) => {
-  const commands = await getCommandsTree();
+  const command = await getCommandsTree();
   const headerHeight = "5rem";
-
   return (
     <html lang="fr">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
       <body>
         <header
           className="sticky top-0 bg-blue-200 z-10"
@@ -31,7 +24,7 @@ export default async (p: { children: ReactNode }) => {
             }}
           >
             <nav>
-              <RecursiveNavItems commands={commands} />
+              {command ? <RecursiveNavItems command={command} /> : null}
             </nav>
           </aside>
           <main className="bg-green-200">{p.children}</main>

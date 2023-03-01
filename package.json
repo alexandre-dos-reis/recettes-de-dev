@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "legacy:create:commands": "tsx ./scripts/fetch-and-create-commands.ts",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "preview": "next build && next start",
