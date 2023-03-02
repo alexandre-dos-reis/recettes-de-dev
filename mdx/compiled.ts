@@ -9,9 +9,11 @@ export const getCompiledMdx = async (filepath: string) => {
 
   const { content, frontmatter } = await compileMDX({
     source: raw,
-    components: { ...(components || {}) },
-    options: { parseFrontmatter: true },
-  } as unknown as MDXRemoteProps);
+    components: { ...components },
+    options: {
+      parseFrontmatter: true,
+    },
+  } as MDXRemoteProps);
 
   return { content, frontmatter };
 };

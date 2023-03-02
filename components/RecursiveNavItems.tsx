@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Command } from "~/mdx/commands/functions";
+import { Document } from "~/mdx/document";
 
 interface Props {
-  command: Command;
+  document: Document;
 }
 
-export const RecursiveNavItems = ({ command }: Props) => {
+export const RecursiveNavItems = ({ document: command }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onClick = () => {
@@ -18,7 +18,7 @@ export const RecursiveNavItems = ({ command }: Props) => {
   return (
     <div>
       <Link
-        className="block"
+        className="block whitespace-nowrap"
         href={command?.slug}
         prefetch={false}
         onClick={onClick}
@@ -30,7 +30,7 @@ export const RecursiveNavItems = ({ command }: Props) => {
           <div className="ml-3" key={c.id}>
             {command.children !== null &&
             command.children?.length === 0 ? null : (
-              <RecursiveNavItems command={c} />
+              <RecursiveNavItems document={c} />
             )}
           </div>
         ))}

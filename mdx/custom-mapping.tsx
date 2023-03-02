@@ -1,13 +1,7 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { CommandItem } from "~/components/CommandItem";
+import { Link } from "~/components/Link";
 
 export const components = {
-  h1: (
-    p: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
-  ) => (
-    <h1 {...p} style={{ backgroundColor: "red" }}>
-      {p.children}
-    </h1>
-  ),
+  a: Link,
   C: CommandItem,
 };

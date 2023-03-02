@@ -1,20 +1,34 @@
+import { ENV } from "~/utils/env";
 import {
-  Command,
-  getCommandBySlug,
-  getCommandsTree,
-  getRecursiveSlugs,
-  Slugs,
-} from "~/mdx/commands/functions";
+  getDocumentBySlug,
+  getDocumentTree,
+  getRecursiveDocuments,
+} from "~/mdx/document";
 import { PageParamsProps } from "~/types/generics";
 
 export const generateStaticParams = async () => {
-  const command = await getCommandsTree();
-  return getRecursiveSlugs(command);
+  return getRecursiveDocuments(await getDocumentTree("content/cli"));
 };
 
 export default async ({
   params,
 }: PageParamsProps<typeof generateStaticParams>) => {
-  const command = await getCommandBySlug(params.slug);
-  return <div>{command.content}</div>;
+  const doc = await getDocumentBySlug(params.slug);
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      <section>
+        {doc.frontmatter.image ? (
+          <img
+            src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`}
+          />
+        ) : (
+          <h1>{doc.frontmatter.title}</h1>
+        )}
+      </section>
+      <section>
+        <div>{doc.content}</div>
+      </section>
+    </div>
+  );
 };
