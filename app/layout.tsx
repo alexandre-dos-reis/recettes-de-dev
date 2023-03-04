@@ -1,10 +1,12 @@
 import "./globals.css";
 import { getDocumentTree } from "~/mdx/document";
 import { ReactNode } from "react";
-import { RecursiveNavItems } from "~/components/RecursiveNavItems";
+import { RecursiveNavbar } from "~/components/ResursiveNavbar";
 
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
+  const testDocument = await getDocumentTree("content/test");
+
   const headerHeight = "5rem";
   return (
     <html lang="fr">
@@ -24,8 +26,8 @@ export default async (p: { children: ReactNode }) => {
             }}
           >
             <nav>
-              {cliDocument ? (
-                <RecursiveNavItems document={cliDocument} />
+              {cliDocument && testDocument ? (
+                <RecursiveNavbar docs={[cliDocument, testDocument]} />
               ) : null}
             </nav>
           </aside>
