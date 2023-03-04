@@ -15,19 +15,21 @@ import { RecursiveNavbar } from "./ResursiveNavbar";
 interface Props extends ComponentPropsWithRef<typeof Link> {
   doc: Document;
   parentIsOpen: boolean;
+  backPath?: string;
 }
 
 export const RecursiveLinkItem = ({
   doc,
   onClick,
   parentIsOpen,
+  backPath,
   ...p
 }: Props) => {
   const [localIsOpen, setLocalIsOpen] = useState(false);
 
   const onClickHandler: MouseEventHandler<HTMLAnchorElement> = (e) => {
     onClick?.(e);
-    // Disable navigation is link is already open
+    // Disable navigation if link is already open
     if (localIsOpen) {
       e.preventDefault();
     }
@@ -35,7 +37,8 @@ export const RecursiveLinkItem = ({
   };
 
   const showChildren =
-    (localIsOpen && parentIsOpen) || (!localIsOpen && parentIsOpen);
+    ((localIsOpen && parentIsOpen) || (!localIsOpen && parentIsOpen)) &&
+    localIsOpen;
 
   useEffect(() => {
     if (!parentIsOpen) {
@@ -51,11 +54,13 @@ export const RecursiveLinkItem = ({
         prefetch={false}
         onClick={onClickHandler}
       >
-        {doc?.frontmatter.nav ?? doc?.frontmatter.title}
+        {showChildren
+          ? `../${backPath ?? ""}`
+          : doc?.frontmatter.nav ?? doc?.frontmatter.title}
       </Link>
-      {showChildren && localIsOpen && doc.children ? (
-        <div className="ml-3">
-          <RecursiveNavbar docs={doc?.children!} />
+      {showChildren && doc.children ? (
+        <div>
+          <RecursiveNavbar backPath="../" docs={doc?.children!} />
         </div>
       ) : null}
     </>
