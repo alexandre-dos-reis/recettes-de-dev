@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Document } from "~/mdx/document";
 import { RecursiveLinkItem } from "./RecursiveLinkItem";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface Props {
   docs: Document[];
@@ -14,10 +13,8 @@ export const RecursiveNavbar = ({ docs }: Props) => {
     string | null
   >();
 
-  const [animationParent] = useAutoAnimate();
-
   return (
-    <div ref={animationParent}>
+    <>
       {docs?.map((d) => (
         <RecursiveLinkItem
           key={d.id}
@@ -27,6 +24,6 @@ export const RecursiveNavbar = ({ docs }: Props) => {
           parentIsOpen={currentDocumentIdOpen === d.id}
         />
       ))}
-    </div>
+    </>
   );
 };
