@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEventHandler, useRef, useState } from "react";
+import { useState } from "react";
 import { Document } from "~/mdx/document";
 import { RecursiveLinkItem } from "./RecursiveLinkItem";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
@@ -14,10 +14,7 @@ export const RecursiveNavbar = ({ docs }: Props) => {
     string | null
   >();
 
-  const [animationParent] = useAutoAnimate({
-    duration: 250,
-    easing: "ease-in",
-  });
+  const [animationParent] = useAutoAnimate();
 
   return (
     <div ref={animationParent}>

@@ -5,6 +5,7 @@ import {
   Dispatch,
   MouseEventHandler,
   SetStateAction,
+  useEffect,
   useState,
 } from "react";
 import { Document } from "~/mdx/document";
@@ -22,15 +23,21 @@ export const RecursiveLinkItem = ({
   parentIsOpen,
   ...p
 }: Props) => {
-  const [localIsOpen, localSetIsOpen] = useState(false);
+  const [localIsOpen, setLocalIsOpen] = useState(false);
 
   const onClickHandler: MouseEventHandler<HTMLAnchorElement> = (e) => {
     onClick?.(e);
-    localSetIsOpen((v) => !v);
+    setLocalIsOpen((v) => !v);
   };
 
   const showChildren =
     (localIsOpen && parentIsOpen) || (!localIsOpen && parentIsOpen);
+
+  useEffect(() => {
+    if (!parentIsOpen) {
+      setLocalIsOpen(false);
+    }
+  }, [parentIsOpen]);
 
   return (
     <>
@@ -42,7 +49,7 @@ export const RecursiveLinkItem = ({
       >
         {doc?.frontmatter.nav ?? doc?.frontmatter.title}
       </Link>
-      {showChildren && doc.children ? (
+      {showChildren && localIsOpen && doc.children ? (
         <div className="ml-3">
           <RecursiveNavbar docs={doc?.children!} />
         </div>
