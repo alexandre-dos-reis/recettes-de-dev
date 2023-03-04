@@ -27,6 +27,10 @@ export const RecursiveLinkItem = ({
 
   const onClickHandler: MouseEventHandler<HTMLAnchorElement> = (e) => {
     onClick?.(e);
+    // Disable navigation is link is already open
+    if (localIsOpen) {
+      e.preventDefault();
+    }
     setLocalIsOpen((v) => !v);
   };
 
