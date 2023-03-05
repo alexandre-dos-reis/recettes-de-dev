@@ -1,7 +1,8 @@
 import "./globals.css";
 import { getDocumentTree } from "~/mdx/document";
 import { ReactNode } from "react";
-import { RecursiveNavbar } from "~/components/ResursiveNavbar";
+import { NavGroup } from "~/components/NavGroup";
+import { Nav } from "~/components/Nav";
 
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
@@ -27,7 +28,7 @@ export default async (p: { children: ReactNode }) => {
           >
             <nav>
               {cliDocument && testDocument ? (
-                <RecursiveNavbar docs={[cliDocument, testDocument]} />
+                <Nav docs={[cliDocument, testDocument]} />
               ) : null}
             </nav>
           </aside>

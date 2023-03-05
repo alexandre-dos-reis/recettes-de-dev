@@ -10,19 +10,21 @@ import {
 } from "react";
 import { Document } from "~/mdx/document";
 import { Link } from "~/components/Link";
-import { RecursiveNavbar } from "./ResursiveNavbar";
+import { NavGroup } from "./NavGroup";
+import { usePathname } from "next/navigation";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface Props extends ComponentPropsWithRef<typeof Link> {
   doc: Document;
   parentIsOpen: boolean;
-  backPath?: string;
+  initialPath: string | null;
 }
 
-export const RecursiveLinkItem = ({
+export const NavItem = ({
   doc,
   onClick,
   parentIsOpen,
-  backPath,
+  initialPath,
   ...p
 }: Props) => {
   const [localIsOpen, setLocalIsOpen] = useState(false);
@@ -46,21 +48,23 @@ export const RecursiveLinkItem = ({
     }
   }, [parentIsOpen]);
 
+  const pathname = usePathname();
+  const [animationParent] = useAutoAnimate();
+
   return (
     <>
       <Link
         {...p}
-        className="block whitespace-nowrap"
-        prefetch={false}
         onClick={onClickHandler}
+        className={`block whitespace-nowrap ${
+          pathname === `/${doc.slug}` && "underline"
+        }`}
       >
-        {showChildren
-          ? `../${backPath ?? ""}`
-          : doc?.frontmatter.nav ?? doc?.frontmatter.title}
+        {`>`} {doc?.frontmatter.nav ?? doc?.frontmatter.title}
       </Link>
       {showChildren && doc.children ? (
-        <div>
-          <RecursiveNavbar backPath="../" docs={doc?.children!} />
+        <div ref={animationParent}>
+          <NavGroup docs={doc?.children!} initialPath="" />
         </div>
       ) : null}
     </>
