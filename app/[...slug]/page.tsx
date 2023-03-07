@@ -7,8 +7,12 @@ import {
 import { PageParamsProps } from "~/types/generics";
 
 export const generateStaticParams = async () => {
-  const document = await getDocumentTree("content/cli");
-  return getRecursiveSlugs(document!);
+  
+  // UGLY !
+  return getRecursiveSlugs(
+    (await getDocumentTree("content/code"))!,
+    getRecursiveSlugs((await getDocumentTree("content/cli"))!)
+  );
 };
 
 export default async ({

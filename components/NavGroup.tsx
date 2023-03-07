@@ -5,7 +5,6 @@ import { Document } from "~/mdx/document";
 import { Link } from "./Link";
 import { NavItem } from "./NavItem";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { isNavInitState, navSlugState } from "~/utils/store";
 import router from "next/dist/client/router";
 
 interface Props {

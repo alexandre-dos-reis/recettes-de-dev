@@ -1,5 +1,10 @@
 import { Document } from "~/mdx/document";
-import { Link } from "./Link";
+import { NavDocumentLink } from "./NavDocumentLink";
+import { navSortState } from "~/utils/store";
+import { sortAlphabetically, sortDocument } from "~/utils/functions";
+import { useCallback, useEffect, useState } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   docs: Array<Document>;
@@ -9,81 +14,65 @@ interface Props {
 
 export const NavNode = ({ docs, pathname, position }: Props) => {
   const pathNode = pathname.split("/")[position];
-  const lastNode = pathname.split("/").at(-1);
-
   const currentDoc = docs.find((x) => x.node === pathNode);
-  const currentDocChildren = currentDoc?.children;
+  const lastNode = pathname.split("/").at(-1);
+  const [navSort] = navSortState();
+  const [animationParent, enable] = useAutoAnimate({
+    duration: 333,
+  });
 
-  // console.log({ position, currentDoc, currentDocChildren, docs });
+  const sort = useCallback(
+    (a: Document, b: Document) =>
+      navSort === "alphabetically"
+        ? sortAlphabetically(a, b)
+        : sortDocument(a, b),
+    [navSort]
+  );
 
-  if (lastNode === "") {
-    return (
-      <>
-        {docs.map((d) => (
-          <Link
-            key={d.id}
-            href={d.slug}
-            className={`block whitespace-nowrap ${
-              pathname === d.slug ? "underline" : ""
-            }`}
-          >
-            - {d.frontmatter.nav ?? d.frontmatter.title}
-          </Link>
-        ))}
-      </>
-    );
-  }
+  const disableAnimation = () => {
+    enable(false);
+  };
 
   return (
     <>
-      {currentDoc && currentDocChildren ? (
-        <Link
-          href={currentDoc?.slug || ""}
-          className={`block whitespace-nowrap ${
-            pathname === currentDoc?.slug ? "underline" : ""
-          }`}
-        >
-          - {currentDoc?.frontmatter.nav ?? currentDoc?.frontmatter.title}
-        </Link>
-      ) : null}
-      <div>
-        {currentDocChildren === undefined
-          ? docs.map((d) => (
-              <Link
-                key={d.id}
-                href={d.slug}
-                className={`block whitespace-nowrap ${
-                  pathname === d.slug ? "underline" : ""
-                }`}
-              >
-                - {d.frontmatter.nav ?? d.frontmatter.title}
-              </Link>
-            ))
-          : null}
-      </div>
-      <div className="ml-3">
-        {currentDoc?.node === lastNode ? (
-          currentDocChildren?.map((d) => (
-            <Link
-              key={d.id}
-              href={d.slug}
-              className={`block whitespace-nowrap ${
-                pathname === d.slug ? "underline" : ""
-              }`}
-            >
-              - {d.frontmatter.nav ?? d.frontmatter.title}
-            </Link>
-          ))
+      <div ref={animationParent}>
+        {currentDoc && currentDoc?.children ? (
+          <NavDocumentLink
+            doc={currentDoc}
+            pathname={pathname}
+            onClick={disableAnimation}
+          />
         ) : (
-          <>
-            <NavNode
-              docs={currentDoc?.children ?? []}
-              pathname={pathname}
-              position={position + 1}
-            />
-          </>
+          docs.sort(sort).map((d) => (
+            <NavDocumentLink key={d.id} doc={d} pathname={pathname}>
+              {d.children ? "> " : ""}
+            </NavDocumentLink>
+          ))
         )}
       </div>
+
+      {currentDoc?.node === lastNode ? (
+        <div className="ml-3" ref={animationParent}>
+          {currentDoc?.children?.sort(sort).map((d) => (
+            <NavDocumentLink
+              key={d.id}
+              doc={d}
+              pathname={pathname}
+              onClick={disableAnimation}
+            >
+              {d.children ? "> " : ""}
+            </NavDocumentLink>
+          ))}
+        </div>
+      ) : (
+        <div className="ml-3">
+          <NavNode
+            docs={currentDoc?.children ?? []}
+            pathname={pathname}
+            position={position + 1}
+          />
+        </div>
+      )}
     </>
   );
 };

@@ -6,7 +6,7 @@ import { Nav } from "~/components/Nav";
 
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
-  const testDocument = await getDocumentTree("content/test");
+  const codeDocument = await getDocumentTree("content/code");
 
   const headerHeight = "5rem";
   return (
@@ -26,8 +26,8 @@ export default async (p: { children: ReactNode }) => {
               height: `calc(100vh - ${headerHeight})`,
             }}
           >
-            {cliDocument && testDocument ? (
-              <Nav docs={[cliDocument, testDocument]} />
+            {cliDocument && codeDocument ? (
+              <Nav docs={[cliDocument, codeDocument]} />
             ) : null}
           </aside>
           <main className="bg-green-200">{p.children}</main>
