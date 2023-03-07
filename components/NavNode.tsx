@@ -3,7 +3,6 @@ import { NavDocumentLink } from "./NavDocumentLink";
 import { navSortState } from "~/utils/store";
 import { sortAlphabetically, sortDocument } from "~/utils/functions";
 import { useCallback, useEffect } from "react";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface Props {
   docs: Array<Document>;
@@ -16,19 +15,6 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
   const currentDoc = docs.find((x) => x.node === pathNode);
   const lastNode = pathname.split("/").at(-1);
   const [navSort] = navSortState();
-  const [animationParent, enable] = useAutoAnimate({
-    duration: 333,
-  });
-
-  const disableAnimation = () => {
-    enable(false);
-  };
-
-  const enableAnimation = () => {
-    enable(true);
-  };
-
-  disableAnimation();
 
   const sort = useCallback(
     (a: Document, b: Document) =>
@@ -38,19 +24,11 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
     [navSort]
   );
 
-  // useEffect(() => {
-  //   disableAnimation();
-  // }, [pathname]);
-
   return (
     <>
-      <div ref={animationParent}>
+      <div>
         {currentDoc && currentDoc?.children ? (
-          <NavDocumentLink
-            doc={currentDoc}
-            pathname={pathname}
-            onClick={enableAnimation}
-          />
+          <NavDocumentLink doc={currentDoc} pathname={pathname} />
         ) : (
           docs.sort(sort).map((d) => (
             <NavDocumentLink key={d.id} doc={d} pathname={pathname}>
@@ -61,14 +39,9 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
       </div>
 
       {currentDoc?.node === lastNode ? (
-        <div className="ml-3" ref={animationParent}>
+        <div className="ml-3">
           {currentDoc?.children?.sort(sort).map((d) => (
-            <NavDocumentLink
-              key={d.id}
-              doc={d}
-              pathname={pathname}
-              // onClick={disableAnimation}
-            >
+            <NavDocumentLink key={d.id} doc={d} pathname={pathname}>
               {d.children ? "> " : ""}
             </NavDocumentLink>
           ))}
