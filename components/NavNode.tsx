@@ -14,19 +14,25 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
   const currentDoc = docs.find((x) => x.node === pathNode);
   const childrenDocs = currentDoc?.children;
 
-//   if (lastNode === "") {
-//     return docs.map((d) => (
-//       <Link
-//         key={d.id}
-//         href={d.slug}
-//         className={`block whitespace-nowrap ${
-//           pathname === d.slug ? "underline" : ""
-//         }`}
-//       >
-//         - {d.frontmatter.nav ?? d.frontmatter.title}
-//       </Link>
-//     ));
-//   }
+  console.log({ position, currentDoc, childrenDocs});
+
+  if (lastNode === "") {
+    return (
+      <>
+        {docs.map((d) => (
+          <Link
+            key={d.id}
+            href={d.slug}
+            className={`block whitespace-nowrap ${
+              pathname === d.slug ? "underline" : ""
+            }`}
+          >
+            - {d.frontmatter.nav ?? d.frontmatter.title}
+          </Link>
+        ))}
+      </>
+    );
+  }
 
   return (
     <>
@@ -40,27 +46,27 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
           - {currentDoc?.frontmatter.nav ?? currentDoc?.frontmatter.title}
         </Link>
       ) : null}
-      {currentDoc?.children ? (
-        <NavNode
-          docs={currentDoc.children ?? []}
-          pathname={pathname}
-          position={position + 1}
-        />
-      ) : null}
+
       <div className="ml-3">
-        {currentDoc?.node === lastNode
-          ? childrenDocs?.map((d) => (
-              <Link
-                key={d.id}
-                href={d.slug}
-                className={`block whitespace-nowrap ${
-                  pathname === d.slug ? "underline" : ""
-                }`}
-              >
-                - {d.frontmatter.nav ?? d.frontmatter.title}
-              </Link>
-            ))
-          : null}
+        {currentDoc?.node === lastNode ? (
+          childrenDocs?.map((d) => (
+            <Link
+              key={d.id}
+              href={d.slug}
+              className={`block whitespace-nowrap ${
+                pathname === d.slug ? "underline" : ""
+              }`}
+            >
+              - {d.frontmatter.nav ?? d.frontmatter.title}
+            </Link>
+          ))
+        ) : (
+          <NavNode
+            docs={currentDoc?.children ?? []}
+            pathname={pathname}
+            position={position + 1}
+          />
+        )}
       </div>
     </>
   );
