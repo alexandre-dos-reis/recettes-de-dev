@@ -13,6 +13,7 @@ const documentFrontmatterSchema = z.object({
 export interface Document {
   id: string;
   slug: string;
+  node: string;
   children?: Document[];
   frontmatter: z.infer<typeof documentFrontmatterSchema>;
 }
@@ -26,7 +27,8 @@ const createDocument = (
 
   return {
     id: path,
-    slug: arraySlug.join("/"),
+    slug: `${arraySlug.join("/")}`,
+    node: arraySlug.at(-1) || "",
     frontmatter,
   };
 };
@@ -91,14 +93,13 @@ export const getDocumentBySlug = async (slugArray: string[]) => {
 
 export type Slugs = { slug: string[] }[];
 
-export const getRecursiveDocuments = (command: Document | null): Slugs => {
-  const slugs: Slugs = [];
-  if (command) {
-    slugs.push({ slug: command.slug.split("/") });
-    command.children?.map((c) => {
-      slugs.concat(getRecursiveDocuments(c));
-    });
-    return slugs;
-  }
-  return [];
+export const getRecursiveSlugs = (
+  command: Document,
+  slugs: Slugs = []
+): Slugs => {
+  slugs.push({ slug: command.slug.split("/") });
+  command.children?.map((c) => {
+    slugs.concat(getRecursiveSlugs(c, slugs));
+  });
+  return slugs;
 };

@@ -2,12 +2,13 @@ import { ENV } from "~/utils/env";
 import {
   getDocumentBySlug,
   getDocumentTree,
-  getRecursiveDocuments,
+  getRecursiveSlugs,
 } from "~/mdx/document";
 import { PageParamsProps } from "~/types/generics";
 
 export const generateStaticParams = async () => {
-  return getRecursiveDocuments(await getDocumentTree("content/cli"));
+  const document = await getDocumentTree("content/cli");
+  return getRecursiveSlugs(document!);
 };
 
 export default async ({
@@ -19,9 +20,7 @@ export default async ({
     <div className="max-w-2xl mx-auto">
       <section>
         {doc.frontmatter.image ? (
-          <img
-            src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`}
-          />
+          <img src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`} />
         ) : (
           <h1>{doc.frontmatter.title}</h1>
         )}

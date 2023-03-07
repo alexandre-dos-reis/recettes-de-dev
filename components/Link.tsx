@@ -6,7 +6,8 @@ import { ComponentPropsWithRef } from "react";
 interface Props extends ComponentPropsWithRef<typeof NextLink> {}
 
 export const Link = ({ href, ...p }: Props) => {
-  if (href.toString().startsWith("http")) {
+  const localHref = href.toString();
+  if (localHref.startsWith("http")) {
     return (
       <a
         {...p}
@@ -18,6 +19,6 @@ export const Link = ({ href, ...p }: Props) => {
       </a>
     );
   } else {
-    return <NextLink href={href} {...p} />;
+    return <NextLink href={localHref} {...p} />;
   }
 };

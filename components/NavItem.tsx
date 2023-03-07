@@ -2,53 +2,51 @@
 
 import {
   ComponentPropsWithRef,
-  Dispatch,
   MouseEventHandler,
-  SetStateAction,
   useEffect,
   useState,
 } from "react";
 import { Document } from "~/mdx/document";
 import { Link } from "~/components/Link";
 import { NavGroup } from "./NavGroup";
-import { usePathname } from "next/navigation";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface Props extends ComponentPropsWithRef<typeof Link> {
   doc: Document;
   parentIsOpen: boolean;
-  initialPath: string | null;
+  pathname: string;
 }
 
 export const NavItem = ({
   doc,
   onClick,
   parentIsOpen,
-  initialPath,
+  pathname,
   ...p
 }: Props) => {
-  const [localIsOpen, setLocalIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(
+    pathname.startsWith(doc.slug) || parentIsOpen
+  );
 
   const onClickHandler: MouseEventHandler<HTMLAnchorElement> = (e) => {
     onClick?.(e);
-    // Disable navigation if link is already open
-    if (localIsOpen) {
-      e.preventDefault();
-    }
-    setLocalIsOpen((v) => !v);
+    setIsOpen((v) => !v);
   };
 
-  const showChildren =
-    ((localIsOpen && parentIsOpen) || (!localIsOpen && parentIsOpen)) &&
-    localIsOpen;
+  const updateState = () => {
+    if (doc.slug !== location.pathname.slice(1)) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true); // only work on different document...
+    }
+  };
 
   useEffect(() => {
-    if (!parentIsOpen) {
-      setLocalIsOpen(false);
-    }
-  }, [parentIsOpen]);
+    // listen to back and forward button to update state
+    addEventListener("popstate", updateState);
+    return () => removeEventListener("popstate", updateState);
+  }, []);
 
-  const pathname = usePathname();
   const [animationParent] = useAutoAnimate();
 
   return (
@@ -57,14 +55,14 @@ export const NavItem = ({
         {...p}
         onClick={onClickHandler}
         className={`block whitespace-nowrap ${
-          pathname === `/${doc.slug}` && "underline"
+          pathname === `${doc.slug}` ? "underline" : ""
         }`}
       >
         {`>`} {doc?.frontmatter.nav ?? doc?.frontmatter.title}
       </Link>
-      {showChildren && doc.children ? (
+      {isOpen && doc.children ? (
         <div ref={animationParent}>
-          <NavGroup docs={doc?.children!} initialPath="" />
+          <NavGroup docs={doc?.children!} pathname={pathname} />
         </div>
       ) : null}
     </>

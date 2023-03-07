@@ -1,9 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { DetailedHTMLProps, HTMLAttributes, useEffect } from "react";
+import { DetailedHTMLProps, HTMLAttributes, useEffect, useState } from "react";
 import { Document } from "~/mdx/document";
+import { isNavInitState } from "~/utils/store";
+import { Link } from "./Link";
 import { NavGroup } from "./NavGroup";
+import { NavNode } from "./NavNode";
 
 type Nav = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -13,10 +16,16 @@ interface Props extends Nav {
 
 export const Nav = ({ docs, ...p }: Props) => {
   const pathname = usePathname();
+  const pathNameWithoutSlash = pathname?.slice(1) || "";
 
   return (
     <nav {...p}>
-      <NavGroup docs={docs} initialPath={pathname} />
+      {pathNameWithoutSlash === "" ? null : (
+        <Link href="/" className={`block whitespace-nowrap`}>
+          {"/"}
+        </Link>
+      )}
+      <NavNode docs={docs} position={0} pathname={pathNameWithoutSlash} />
     </nav>
   );
 };

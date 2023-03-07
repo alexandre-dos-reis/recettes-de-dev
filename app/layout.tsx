@@ -26,11 +26,9 @@ export default async (p: { children: ReactNode }) => {
               height: `calc(100vh - ${headerHeight})`,
             }}
           >
-            <nav>
-              {cliDocument && testDocument ? (
-                <Nav docs={[cliDocument, testDocument]} />
-              ) : null}
-            </nav>
+            {cliDocument && testDocument ? (
+              <Nav docs={[cliDocument, testDocument]} />
+            ) : null}
           </aside>
           <main className="bg-green-200">{p.children}</main>
         </div>
