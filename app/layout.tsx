@@ -1,7 +1,6 @@
 import "./globals.css";
 import { getDocumentTree } from "~/mdx/document";
 import { ReactNode } from "react";
-import { NavGroup } from "~/components/NavGroup";
 import { Nav } from "~/components/Nav";
 
 export default async (p: { children: ReactNode }) => {
