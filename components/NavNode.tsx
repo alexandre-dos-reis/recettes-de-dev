@@ -2,9 +2,8 @@ import { Document } from "~/mdx/document";
 import { NavDocumentLink } from "./NavDocumentLink";
 import { navSortState } from "~/utils/store";
 import { sortAlphabetically, sortDocument } from "~/utils/functions";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   docs: Array<Document>;
@@ -21,6 +20,16 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
     duration: 333,
   });
 
+  const disableAnimation = () => {
+    enable(false);
+  };
+
+  const enableAnimation = () => {
+    enable(true);
+  };
+
+  disableAnimation();
+
   const sort = useCallback(
     (a: Document, b: Document) =>
       navSort === "alphabetically"
@@ -29,9 +38,9 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
     [navSort]
   );
 
-  const disableAnimation = () => {
-    enable(false);
-  };
+  // useEffect(() => {
+  //   disableAnimation();
+  // }, [pathname]);
 
   return (
     <>
@@ -40,7 +49,7 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
           <NavDocumentLink
             doc={currentDoc}
             pathname={pathname}
-            onClick={disableAnimation}
+            onClick={enableAnimation}
           />
         ) : (
           docs.sort(sort).map((d) => (
@@ -58,7 +67,7 @@ export const NavNode = ({ docs, pathname, position }: Props) => {
               key={d.id}
               doc={d}
               pathname={pathname}
-              onClick={disableAnimation}
+              // onClick={disableAnimation}
             >
               {d.children ? "> " : ""}
             </NavDocumentLink>

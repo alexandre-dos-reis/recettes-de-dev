@@ -9,6 +9,7 @@ import { PageParamsProps } from "~/types/generics";
 export const generateStaticParams = async () => {
   
   // UGLY !
+  // RangeError: Maximum call stack size exceeded on 404...
   return getRecursiveSlugs(
     (await getDocumentTree("content/code"))!,
     getRecursiveSlugs((await getDocumentTree("content/cli"))!)
