@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import { components } from "~/mdx/custom-mapping";
 import { z, ZodRawShape } from "zod";
 import { stat } from "node:fs/promises";
+import rehypePrismPlus from 'rehype-prism-plus'
 
 export const getCompiledMdx = async (filepath: string) => {
   const raw = await fs.readFile(filepath, "utf-8");
@@ -11,6 +12,9 @@ export const getCompiledMdx = async (filepath: string) => {
     source: raw,
     components: { ...components },
     options: {
+      mdxOptions: {
+        rehypePlugins: [rehypePrismPlus]
+      },
       parseFrontmatter: true,
     },
   } as MDXRemoteProps);

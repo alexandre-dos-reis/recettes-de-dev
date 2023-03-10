@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./prism-theme.css";
 import { getDocumentTree } from "~/mdx/document";
 import { ReactNode } from "react";
 import { Nav } from "~/components/Nav";
