@@ -7,6 +7,7 @@ specifiers:
   '@types/react-dom': 18.0.10
   add: ^2.0.6
   autoprefixer: ^10.4.13
+  dotenv: ^16.0.3
   eslint: 8.33.0
   eslint-config-next: 13.1.6
   graphql: ^16.6.0
@@ -44,6 +45,7 @@ dependencies:
 
 devDependencies:
   autoprefixer: 10.4.13_postcss@8.4.21
+  dotenv: 16.0.3
   graphql: 16.6.0
   graphql-request: 5.2.0_graphql@16.6.0
   postcss: 8.4.21
@@ -1130,6 +1132,11 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: false
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: true
 
   /electron-to-chromium/1.4.315:
     resolution: {integrity: sha512-ndBQYz3Eyy3rASjjQ9poMJGoAlsZ/aZnq6GBsGL4w/4sWIAwiUHVSsMuADbxa8WJw7pZ0oxLpGbtoDt4vRTdCg==}
