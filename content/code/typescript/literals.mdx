@@ -9,11 +9,12 @@ nav: Array<Literal>
 ```typescript
 const options = ["a", "b", "c"] as const;
 
-const func = (arg: string[]) => {
+const func = (array: string[]) => {
   // ...
 };
 
-func(options); // Ceci cause une erreur
+func(options);
+// ^^^^^^^^^^ Ceci cause une erreur !
 ```
 
 ## Solution 1
@@ -21,14 +22,14 @@ func(options); // Ceci cause une erreur
 Changer le type de l'argument
 
 ```typescript
-const getRandomItem = <T>(array: readonly T[]) => {
+const func = <T>(array: readonly T[]) => {
   // ...
 };
 ```
 
 ## Solution 2
 
-Rendre le tableau immutable, mutable.
+Placer le tableau immutable `readonly` dans un tableau mutable en utilisant le spread operator.
 
 ```typescript
 func([...options]);
