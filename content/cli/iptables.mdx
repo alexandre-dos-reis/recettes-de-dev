@@ -1,0 +1,24 @@
+---
+sort: 44
+title: iptables
+
+
+---
+
+`Iptables` est un logiciel libre de l'espace utilisateur Linux grâce auquel l'administrateur système peut configurer les chaînes et règles dans le pare-feu en espace noyau.
+
+<C i={`iptables -L`}>Afficher les règles en cours par défaut pour la table `filter`.</C>
+
+<C i={`iptables -L -t filter`}>Similaire à la commande précédente.</C>
+
+<C i={`iptables -L --line-numbers`}>Afficher un numéro sur les règles en cours.</C>
+
+<C i={`iptables -L -t nat`}>Affiche les règles pour la table `NAT`.</C>
+
+<C i={`iptables -L -t mangle`}>Affiche les règles pour la table `mangle`.</C>
+
+<C i={`iptables -F`}>Réinitialise toutes les règles iptables !</C>
+
+<C i={`iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 1813 -j DNAT --to 192.168.1.78:1812`}>Sur la table `NAT`, avant le pare-feu, sur l'interface `vmbr0`, pour le protocole `TCP`, effectue une redirection du port `1813` vers la machine `192.168.1.78` port `1812`.</C>
+
+

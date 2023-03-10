@@ -1,0 +1,12 @@
+---
+
+title: pnpm
+sort: 70
+
+---
+
+Pnpm est un gestionnaire de paquet NodeJS alternatif à Npm. Lorsque vous utilisez Npm, si vous avez 100 projets utilisant une dépendance, vous aurez 100 copies de cette dépendance enregistrées sur le disque. Avec Pnpm, la dépendance sera stockée dans un emplacement centralisé. Par exemple, si elle a 100 fichiers, et qu'une nouvelle version a un changement dans un seul de ces fichiers, `pnpm update` ajoutera seulement 1 nouveau fichier au stockage, au lieu de cloner la dépendance toute entière juste pour un seul changement.
+
+<C i={`pnpm init`}>Crée un project npm en créant un fichier `package.json`.</C>
+
+

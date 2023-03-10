@@ -1,0 +1,22 @@
+---
+sort: 57
+title: Ansible
+nav: ansible
+image: cfd4e18e-94ce-4dfd-98cf-9e0701251ba1
+---
+
+**Ansible** est une plate-forme logicielle libre pour la configuration et la gestion des ordinateurs écrite en Python. Elle gère les différents nœuds à travers SSH et ne nécessite l'installation d'aucun logiciel supplémentaire sur ceux-ci. Le système utilise YAML pour exprimer des descriptions réutilisables de systèmes, appelées playbook. Les modules communiquent via la sortie standard en notation JSON et peuvent être écrits dans n'importe quel langage de programmation.
+
+<C i={`ansible --version`}>Affiche la version d'Ansible, les fichiers de configuration et les exécutables.</C>
+
+<C i={`ansible myhost -m setup`}>Affiche les informations récupérées par Ansible lors de la connexion, très utile pour débugger mais très verbeux.</C>
+
+<C i={`ansible-playbook nomDuPlayBook`}>Commande pour démarrer un playbook</C>
+
+<C i={`ansible-vault encrypt_string`}>Permet de chiffrer une variable dont le résultat pour être utilisé dans fichier, utile lorsque l'on ne veut pas que les mots de passe apparaissent en clair.</C>
+
+<C i={`ansible-playbook --ask-vault-pass  test-sudo-pass.yml`}>Permet de lancer une recette en demandant le mot de passe de chiffrement.</C>
+
+<C i={`ansible-playbook main.yml --limit test`}>Joue le playbook `main.yml` en le limitant au groupe `test`.</C>
+
+

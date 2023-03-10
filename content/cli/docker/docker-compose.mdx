@@ -1,0 +1,44 @@
+---
+sort: 53
+title: Docker Compose
+nav: docker-compose
+image: 7f9027cc-22de-4783-9708-46df73349cb2
+---
+
+**Docker Compose** est un outil permettant de définir et d'exécuter des applications Docker multi-conteneurs. Il utilise des fichiers YAML pour configurer les services de l'application et effectue le processus de création et de démarrage de tous les conteneurs avec une seule commande. L'utilitaire CLI docker-compose permet aux utilisateurs d'exécuter des commandes sur plusieurs conteneurs à la fois, par exemple, créer des images, mettre à l'échelle des conteneurs, exécuter des conteneurs qui ont été arrêtés, etc. 
+
+<C i={`docker-compose --help`}>Affiche les commandes possibles.</C>
+
+<C i={`docker-compose build`}>Construction des images.</C>
+
+<C i={`docker-compose build --pull --no-cache`}>Construit les images avec le tag lastest et n'utilise pas le cache.</C>
+
+<C i={`docker-compose up -d`}>Permet de démarrer l'architecture présent dans le fichier courant docker-compose.yml</C>
+
+<C i={`docker-compose down`}>Arrête et supprime les conteneurs, les images, les réseaux et les volumes créés par la commande précédente.</C>
+
+<C i={`docker-compose up -d --scale web=3`}>Permet de mettre à l'échelle le service `web` à 3 conteneurs.</C>
+
+<C i={`docker-compose up -d --build --force-recreate`}>Construit les images avant de lancer les conteneurs, et force la recréation des images même si la configuration n'a pas changé.</C>
+
+<C i={`docker-compose -f docker-compose-prod.yml up -d`}>Permet de lancer la commande en spécifiant un fichier.</C>
+
+<C i={`docker-compose stop`}>Stop les conteneurs</C>
+
+<C i={`docker-compose start`}>Démarre les services arrêtés.</C>
+
+<C i={`docker-compose pull`}>Met à jour les images appelés dans le fichier `docker-compose.yml`.</C>
+
+<C i={`docker-compose logs`}>Affiche les logs des services</C>
+
+<C i={`docker-compose --verbose`}>Le mode verbeux.</C>
+
+<C i={`docker-compose top`}>Affiche les processus en cours.</C>
+
+<C i={`docker-compose exec web sh`}>Equivalent du `docker exec`.</C>
+
+<C i={`docker-compose images`}>Liste les images utilisées par les conteneurs crées.</C>
+
+<C i={`docker-compose ps`}>Liste les conteneurs.</C>
+
+

@@ -1,0 +1,142 @@
+---
+sort: 59
+title: Git
+nav: git
+image: 60783bb0-f721-4ed9-8b61-370f12782dbf
+---
+
+Git est un logiciel de gestion de versions décentralisé créé par Linus Torvalds. [Référence de commandes basiques](https://git-scm.com/book/it/v2/Appendice-C%3A-Git-Commands-Basic-Snapshotting#:~:text=git%20add,commit%20snapshot%20to%20look%20like.)
+
+<C i={`git init`}>Initie un dépôt git dans le dossier courant.</C>
+
+<C i={`git clone /path/to/repository`}>Crée une copie de votre dépôt local.</C>
+
+<C i={`git clone username@host:/path/to/repository`}>
+  Crée une copie depuis un serveur distant.
+</C>
+
+<C i={`git remote add origin https://@githubServer/login/repo.git`}>
+  Ajout d'un nouveau dépôt distant.
+</C>
+
+<C i={`git add [Nom de fichier]`}>Propose un changement.</C>
+
+<C i={`git add .`}>
+  Ajoute tous les fichiers dans la proposition de changements, sauf ceux
+  spécifiés dans le fichier .gitignore.{" "}
+</C>
+
+<C i={`git add -p`}>
+  Affiche les changements avec une colorations syntaxique et demande s'ils
+  doivent être indexés.
+</C>
+
+<C i={`git reset [Nom de fichier]`}>
+  Supprime le fichier reset du stage git sans supprimer les modifications avec
+  la commande.
+</C>
+
+<C i={`git rm --cached [Nom de fichier]`}>
+  Supprime le fichier de l'index seulement et le garde dans la copie de travail
+  (grâce à l'option --cached). C'est l'exact opposé du git add. Le fichier passe
+  donc dans l'état non versionné et garde ses modifications.
+</C>
+
+<C i={`git commit -m 'Message de validation'`}>
+  C'est la première étape dans un workflow git basique. Cette commande valide
+  les propositions, les fichiers concernées sont ajouté au HEAD, mais pas encore
+  dans le dépôt distant.
+</C>
+
+<C i={`git commit --amend`}>
+  Permet de changer le dernier commit effectuer, par exemple lorsque l'on a
+  oublié un fichier dans la staging area. En réalité le dernier commit sera
+  remplacer par un nouveau.
+</C>
+
+<C i={`git commit -am “this fixes the previous oopsies”`}>
+  Equivalent à la commande précédente.
+</C>
+
+<C i={`git push`}>
+  La commande git push est utilisée pour charger le contenu d'un dépôt local
+  vers un dépôt distant. Cela transfère les commits du dépôt local vers le dépôt
+  distant.
+</C>
+
+<C i={`git checkout -b ma-nouvelle-branche`}>
+  Crée une nouvelle branche et place le head sur cette nouvelle branche.
+</C>
+
+<C i={`git checkout dev`}>Permet de changer notre projet vers la branche dev</C>
+
+<C i={`git log`}>Ouvre une revue de tous les commits</C>
+
+<C i={`git status`}>Affiche les informations liées à la branche en cours.</C>
+
+<C i={`git branch`}>Affiche les branches locales</C>
+
+<C i={`git branch -a`}>Affiches toutes les branches, locales et distantes.</C>
+
+<C i={`git branch -vv`}>Affiches les derniers commits liés au branches.</C>
+
+<C i={`git branch newFeature`}>
+  Crée une branche nommée "newFeature" héritée de la branche actuelle.
+</C>
+
+<C i={`git branch -d newFeature`}>
+  Supprime la branche ''newFeature" en local. Ceci est une opération « sûre »
+  dans la mesure où Git vous empêche de supprimer la branche lorsqu'elle
+  contient des changements non mergés.
+</C>
+
+<C i={`git push origin --delete new-feature`}>
+  Supprime la branche sur le dépôt distant.
+</C>
+
+<C i={`git fetch`}>
+  Récupère les informations sur les commits effectués sur la branche courante
+  qui n'existe pas encore sur la branche locale.
+</C>
+
+<C i={`git merge newFeature`}>
+  Permet de fusionner les changements de la branche "newFeature" vers la branche
+  actuelle.
+</C>
+
+<C i={`git pull`}>
+  Cette commande regroupe les commandes git fetch suivie de git merge. Cette
+  commande télécharge les données des commits qui n'ont pas encore été
+  récupérées dans la branche locale puis fusionne ensuite ces données.{" "}
+</C>
+
+<C i={`git reset HEAD^`}>
+  Supprime tous les commits effectués en local mais ne supprime pas les
+  changements effectués sur les fichiers.
+</C>
+
+<C i={`git add -p`}>
+  Affiche les modifications avec une coloration syntaxique, et demande si les
+  changements doivent être indexé.
+</C>
+
+<C i={`git stash`}>
+  git stash stocke (ou stashe) temporairement les changements apportés à votre
+  copie de travail pour que vous puissiez effectuer d'autres tâches, puis
+  revenir et les réappliquer par la suite.
+</C>
+
+<C i={`git stash pop`}>
+  Vide le stash et réapplique les changements à la copie de travail.
+</C>
+
+<C i={`git stash apply`}>
+  Applique les changements à votre copie de travail et les conservant dans le
+  stash.
+</C>
+
+<C i={`git stash push -m "mes_modifs"`}>Crée un stash et lui donne un nom.</C>
+
+<C i={`git stash list`}>Liste tous les stashs</C>
+
+<C i={`git stash pop stash@{n}`}>Récupère un stash par son nom.</C>

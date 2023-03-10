@@ -1,0 +1,20 @@
+---
+sort: 37
+title: cfdisk
+
+
+---
+
+Cfdisk est un outil de partitionnement utilisé sous Linux, similaire à fdisk, mais avec une interface (curses)
+
+<C i={`cfdisk`}>Lance une interface graphique permettant la partition du disque par défaut ou du premier disque trouvé.</C>
+
+<C i={`fdisk -l`}>Affiche l'ensemble des périphériques et leurs informations.</C>
+
+<C i={`cfdisk /dev/sdb`}>Démarre l'interface de partition pour le périphérique `sdb`.</C>
+
+<C i={`mkfs.ext4 -L "clé-usb" /dev/sdb`}>Configure le périphérique `sdb` avec le système de fichier `ext4` et en le nommant `clé-usb`.</C>
+
+<C i={`mkfs.btrfs -L "disqueA" /dev/sde`}>Configure le périphérique `sde` avec le système de fichier `btrfs` et en le nommant `disqueA`.</C>
+
+

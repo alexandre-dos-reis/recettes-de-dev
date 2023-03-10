@@ -1,0 +1,24 @@
+---
+sort: 70
+title: ssh
+
+
+---
+
+La commande "ssh" permet de se connecter de façon sécurisée à une machine distante.
+
+<C i={`ssh-add --apple-use-keychain ~/.ssh/[your-private-key]`}>Sur MacOS, charge une clé privée dans la keychain permettant de ne plus avoir à la spécifier plus tard de taper sa passphrase.</C>
+
+<C i={`ssh 192.168.1.1`}>Connexion à une machine distante.</C>
+
+<C i={`ssh john@remotehost.example.com`}>Connexion à la machine distante avec le login john.</C>
+
+<C i={`ssh -l john remotehost.example.com`}>Équivaut à la commande précédente.</C>
+
+<C i={`ssh-keygen -t dsa`}>Génération d'une clé DSA (à faire sur la machine locale).</C>
+
+<C i={`ssh-copy-id -i ~/.ssh/id_dsa.pub john@remotehost.example.com`}>Copie de la clé publique sur la machine distante.</C>
+
+<C i={`exit`}>Effectue la sortie d'un programme, d'un shell ou se déconnecte d'un réseau Unix.</C>
+
+

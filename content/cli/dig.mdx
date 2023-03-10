@@ -1,0 +1,20 @@
+---
+sort: 68
+title: dig
+
+
+---
+
+La commande dig permet d'interroger le serveur de noms DNS et de faire de la résolution DNS.
+
+<C i={`dig -x 192.168.0.1`}>Permet d'effectuer une résolution inversée en précisant une adresse ip.</C>
+
+<C i={`dig ss64.com`}>Retourne l'enregistrement DNS A (IPv4) pour l'adresse : ss64.com</C>
+
+<C i={`dig ss64.com AAAA`}>Retourne l'enregistrement DNS AAAA (IPv6).</C>
+
+<C i={`dig ss64.com @8.8.8.8`}>Retourne l'enregistrement DNS A (IPv4) en utilisant le DNS de Google (8.8.8.8) à la place du cache local.</C>
+
+<C i={`nslookup ss64.com`}>Commande de résolution dépréciée.</C>
+
+

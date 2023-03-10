@@ -1,0 +1,22 @@
+---
+sort: 47
+title: Apache2 httpd
+nav: apache2
+image: ade17f08-5320-4d24-8f81-b4176af52431
+---
+
+Apache2 est le serveur web le plus utilisé au monde, il utilise les protocoles de la couche application HTTP et HTTPS qui eux-mêmes utilisent le protocole TCP comme couche de transport. Apache2 est un logiciel libre et est maintenu par la fondation Apache. Il est connu pour prendre en charges des modules additifs lui donnant des fonctionnalités supplémentaires comme Perl, PHP, Python et Ruby.
+
+<C i={`a2dissite 000-default`}>Désactive la configuration pour le fichier `000-default.conf`.</C>
+
+<C i={`a2ensite monsite`}>Active la configuration pour le fichier `monsite.config`.</C>
+
+<C i={`a2enmod php-7.3`}>Active le module `php-7.3`.</C>
+
+<C i={`a2dismod proxy`}>Désactive le module `proxy`.</C>
+
+<C i={`a2query -s`}>Renvoie la liste des sites actifs.</C>
+
+<C i={`a2query -m`}>Renvoie la liste des modules actifs.</C>
+
+

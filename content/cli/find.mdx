@@ -1,0 +1,46 @@
+---
+sort: 19
+title: find
+
+
+---
+
+La commande `find` permet de chercher des fichiers et éventuellement d'exécuter des commandes dessus.
+
+<C i={`find -name`}>Recherche d'un fichier par son nom.</C>
+
+<C i={`find -iname`}>Même chose que `-name` mais insensible à la casse.</C>
+
+<C i={`find -type`}>Recherche de fichier d'un certain type.</C>
+
+<C i={`find / -type f -name "birthday-party.mp4"`}>Recherche dans tout le système un fichier nommé `birthday-party.mp4`.</C>
+
+<C i={`find -mtime`}>Recherche par date de dernière modification.</C>
+
+<C i={`find -user`}>Recherche de fichiers appartenant à l'utilisateur donné.</C>
+
+<C i={`find -group`}>Recherche de fichiers appartenant au groupe donné.</C>
+
+<C i={`find -size`}>Recherche par rapport à une taille de fichier.</C>
+
+<C i={`find -exec`}>Exécute la commande donnée aux fichiers trouvés.</C>
+
+<C i={`find -a`}>Opérateur ET.</C>
+
+<C i={`find -o`}>Opérateur OU.</C>
+
+<C i={`find ! || find -not`}>Opérateur NOT.</C>
+
+<C i={`find myfile* -print`}>Rechercher un fichier commençant par `myfile`.</C>
+
+<C i={`find -name *myfile*.txt -print`}>Rechercher un fichier contenant `myfile` et ayant pour extention `txt`.</C>
+
+<C i={`find /usr -type d -print`}>Afficher tous les répertoires de `/usr`.</C>
+
+<C i={`find $HOME \( -name '*.txt' -o -name '*.pdf' \)`}>Afficher tous les fichiers `txt` ou `pdf` dans le répertoire home de l'utilisateur.</C>
+
+<C i={`find $HOME -name *.txt -atime +7 -exec rm \;`}>Supprimer tous les fichiers `txt` qui n'ont pas été consultés depuis plus de 7 jours dans le répertoire `home` de l'utilisateur.</C>
+
+<C i={`find $HOME -name '*.txt' -size +4k -exec ls -l \;`}>Afficher la taille de tous les fichiers de plus de 4 Ko.</C>
+
+

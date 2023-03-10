@@ -1,0 +1,36 @@
+---
+sort: 62
+title: Mariadb-server
+nav: mariaDB
+image: e3acb2c8-bf5a-4786-b1cf-330459afc9b0
+---
+
+Commandes liées au moteur InnoDB géré par le système de gestion de base de données MariaDB.
+
+<C i={`mysql_secure_installation`}>Lance un script avec des questions/réponses pour une 1ère sécurisation de MariaDB.</C>
+
+<C i={`mysql -u root -p`}>Utilise le client `mysql` pour se connecter au SGBD MariaDB, en précisant un nom d'utilisateur root et un mot de passe.</C>
+
+<C i={`mysql -u root -p my_bdd`}>Se connecte en root et se positionne sur la bdd `my_bdd`.</C>
+
+<C i={`mysql -u alex -p < monscript.sql`}>Importe le fichier de script SQL dans MariaDB, l'utilisateur doit posséder les droits liés aux modifications qui seront effectuées par le script.</C>
+
+<C i={`mysql -u alex -p bdd_employees`}>Se connecte à MariaDB, en précisant un nom d'utilisateur, le mot de passe et la base de données à utiliser.</C>
+
+<C i={`SHOW DATABASES;`} env={`mysql>`}>Affiche toutes les bases de données du serveur.</C>
+
+<C i={`USE bdd_example;`} env={`mysql>`}>Utiliser la base de données `bdd_example`.</C>
+
+<C i={`SHOW TABLES;`} env={`mysql>`}>Affiche les tables de la base de données selectionnées.</C>
+
+<C i={`CREATE USER 'alex'@'%' IDENTIFIED BY 'monsupermotdepasse';`} env={`mysql>`}>Crée l'utilisateur alex avec un mot de passe, cet utilisateur peut accéder depuis n'importe quel l'hôte avec l'utilisation du charactère `%`.</C>
+
+<C i={`GRANT ALL PRIVILEGES ON bdd_example.* TO 'alex'@'%';`} env={`mysql>`}>Donne tous les droits à l'utilisateur alex depuis n'importe quel hôte à la base de données `bdd_example` sur toutes les tables avec le charactère `*` .</C>
+
+<C i={`GRANT ALL PRIVILEGES ON bdd_example.* TO 'alex'@'%' identified by 'monsupermotdepasse';`} env={`mysql>`}>Cette commande est un condensé des 2 commandes précédentes</C>
+
+<C i={`DROP DATABASE my_bdd;`} env={`mysql>`}>Supprime la base de donnée.</C>
+
+<C i={`FLUSH PRIVILEGES;`} env={`mysql>`}>Met à jour les droits, nécéssaire lorsque les privilèges sont modifiés avec les commandes `INSERT`, `UPDATE`, or `DELETE` mais inutile avec `GRANT`, `REVOKE`, `SET PASSWORD`, ou `RENAME USER` car le serveur effectue la mise à jour des tables automatiquement.</C>
+
+

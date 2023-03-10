@@ -1,0 +1,74 @@
+---
+sort: 52
+title: Docker
+nav: docker
+image: 1efc5018-110b-4b06-90ad-c1ccf11e70cf
+---
+
+Docker est un outil de virtualisation légère basé sur le principe de conteneurs étanches.
+
+<C i={`docker pull [image]`}>Télécharge l’image depuis le hub ou repository, et la rend exécutable pour les conteneurs.</C>
+
+<C i={`docker pull [image]:latest`}>Récupère une image dans sa dernière version.</C>
+
+<C i={`docker search --stars=5 nginx`}>Effectue une recherche avec le mot clé « nginx » et 5 étoiles en notation.</C>
+
+<C i={`docker images`}>Liste les images téléchargées.</C>
+
+<C i={`docker run [image]`}>Exécute l’image dans un conteneur, Docker se charge de la télécharger si l'image n'est pas présente.</C>
+
+<C i={`docker run -it ubuntu bash`}>Démarre un conteneur Ubuntu en mode interactif accessible depuis le terminal avec bash.</C>
+
+<C i={`docker run -d [image]`}>Démarre un conteneur en mode détaché, qui tourne en tâche de fond.</C>
+
+<C i={`docker run -d -p 88:80 nginx`}>Lance Ngnix dans un conteneur en mode détaché, et le rend accessible sur le port 88 de la machine hôte.</C>
+
+<C i={`docker run -v [dossier hôte]:[dossier conteneur] [image]`}>Lance un conteneur à partir de l’image et copie le contenu du dossier hôte vers le dossier du conteneur.</C>
+
+<C i={`docker run -d -p 88:80 --name Web1 -v /home/user1:/usr/share/nginx/html:ro nginx`}>Lance Ngnix dans un conteneur en mode détaché appelé Web1, redirige le port 88 de la machine hôte vers ce conteneur. Copie le contenu du dossier user1 vers le dossier html du conteneur NginX en lecture seule.</C>
+
+<C i={`docker run -d -p 89:80 --name Web2 -v /home/user1:/usr/local/apache2/htdocs/:ro httpd`}>Idem pour Apache2 sur le port 89.</C>
+
+<C i={`docker run -d -p 2222:22 --name [nom du conteneur] [image] /usr/sbin/sshd -D`}>Lance un conteneur en démarrant le service sshd, il devient accessible via le port 2222 de l'hôte.</C>
+
+<C i={`docker exec -tid [conteneur] [commande]`}>Exécute une commande dans un conteneur actif en mode détaché.</C>
+
+<C i={`docker ps`}>Affiche les informations sur les conteneurs en cours d’exécution.</C>
+
+<C i={`docker ps -a`}>Idem mais ajoute les conteneurs inactifs.</C>
+
+<C i={`docker network ls`}>Liste le réseau utilisé par Docker sur la machine hôte.</C>
+
+<C i={`docker stop [conteneur]`}>Arrête le conteneur en question.</C>
+
+<C i={`docker start [conteneur]`}>Démarre un conteneur arrêté.</C>
+
+<C i={`docker restart [conteneur]`}>Redémarre un conteneur en cours d’utilisation.</C>
+
+<C i={`docker attach [conteneur]`}>Accède à un conteneur déjà démarré en mode interactif.</C>
+
+<C i={`docker top [conteneur]`}>Affiche les processus PID lancés dans le conteneur.</C>
+
+<C i={`docker rename [conteneur]`}>Renomme un conteneur.</C>
+
+<C i={`docker rm -f [conteneur]`}>Force la suppression du conteneur.</C>
+
+<C i={`docker stats`}>Affiche les statiques de tous les conteneurs en cours d’utilisation. CPU, mémoire, etc…</C>
+
+<C i={`docker diff [identifiant ou nom du conteneur]`}>Trouve la liste des modifications d’un conteneur par rapport à son image d'origine.</C>
+
+<C i={`docker commit [identifiant ou nom du conteneur] [nom de l’image]`}>Fait persister l’état d’un conteneur en une nouvelle image.</C>
+
+<C i={`docker rmi [nom de l’image]`}>Supprime une image.</C>
+
+<C i={`docker help`}>Obtenir la liste des commandes pour Docker.</C>
+
+<C i={`docker help [nom de la commande]`}>Obtenir de l’aide sur les options d’un commande.</C>
+
+<C i={`docker logs [conteneur]`}>Affiche les logs du conteneur, ne renvoie rien si tout se passe bien.</C>
+
+<C i={`docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}"`}>Permet d'afficher les stats des conteneurs au format d'une table.</C>
+
+<C i={`docker inspect --format "{{.HostConfig.RestartPolicy.Name}},{{.Name}},{{.Config.Image}},{{.State.Status}}" $(docker ps -aq) | column -s, -t | awk '{ if ($1 != "no") print }'`}>Affiche les conteneurs avec leur politique de redémarrage, utile pour voir les conteneurs qui ne redémarraient pas après un crash.</C>
+
+

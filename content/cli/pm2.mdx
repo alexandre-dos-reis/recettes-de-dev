@@ -1,0 +1,28 @@
+---
+sort: 50
+title: pm2
+
+
+---
+
+PM2 est un gestionnaire de processus pour application en ligne. Sa prise en main est proposée sous la forme d'une CLI simple et intuitive, installable via NPM. PM2 gère les principaux langages de scripts coté serveur comme bash, python, node, ruby, coffee, php ou perl. Il possède des fonctionnalités de rechargement à chaud et de cluster pour un déploiement efficace.
+
+<C i={`pm2 start app.js --name monsite.fr`}>Démarre un processus et permet de le lui donner un nom.</C>
+
+<C i={`pm2 list`}>Affiche les statuts de tous les processus. </C>
+
+<C i={`pm2 reload 0`}>Rechargement sans temps mort du processus 0 </C>
+
+<C i={`pm2 stop 0`}>Arrêt du processus 0.</C>
+
+<C i={`pm2 restart 0`}>Redémarre le processus 0.</C>
+
+<C i={`pm2 delete 0`}>Supprime le processus 0.</C>
+
+<C i={`pm2 delete all`}>Supprime tous les processus, qu'ils soient stoppés ou pas.</C>
+
+<C i={`pm2 save`}>Sauve la liste des processus pour qu'ils démarre au redémarrage de la machine.</C>
+
+<C i={`pm2 monit`}>Permet d'afficher les informations en temps réels sur les processus.</C>
+
+

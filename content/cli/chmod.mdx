@@ -1,0 +1,38 @@
+---
+sort: 26
+title: chmod
+
+
+---
+
+La commande `chmod` permet de changer les droits d'un fichier ou d'un répertoire. Pour exécuter cette commande vous devez être le propriétaire du fichier ou l'utilisateur root.
+
+<C i={`chmod u+w fichier`}>Ajouter les droits d'écriture au propriétaire (user, write)</C>
+
+<C i={`chmod g+r fichier`}>Ajouter les droits de lecture au groupe du fichier (group, read)</C>
+
+<C i={`chmod o-x fichier`}>Supprimer les droits d'exécution aux autres utilisateurs (other, execution)</C>
+
+<C i={`chmod a+rw dossier`}>Ajouter les droits de lecture et d'exécution à tout ce que contient le répertoire dossier.</C>
+
+<C i={`chmod -R a+rx files`}>Ajouter les droits de lecture et d'exécution à tout ce que contient le répertoire dossier.</C>
+
+<C i={`chmod 764 dossier`}>Tous les droits pour le propriétaire (7xx), lecture et écriture pour le groupe (x6x) et lecture uniquement pour les autres (xx4).</C>
+
+<C i={`chmod -R 755 dossier`}>Donner au propriétaire tous les droits (7xx), alors que seuls les droits de lecture et d'accès seront donnés aux autres (x55). Grace à l'option -R ces droits seront appliqués à tous les fichiers et dossiers contenus dans ce répertoire.</C>
+
+<C i={`chmod u=rwx,g=x,o=rw fic2`}>Autre manière d'écrire des droits</C>
+
+<C i={`chmod u=rwx,g=,o= fic3`}>Ne donne aucun droit aux groupes, ni au autres.</C>
+
+<C i={`chmod u+s commande`}>Permet de placer les SUID-Bit</C>
+
+<C i={`chmod 4755 commande`}>Idem</C>
+
+<C i={`chmod g+s commande`}>Permet de placer les GUID-Bit</C>
+
+<C i={`chmod 2755 commande`}>Idem</C>
+
+<C i={`chmod 1777 /tmp`}>Permet d'ajouter le sticky bit au dossier `tmp` permettant d'ajouter une protection contre l’effacement du contenu d’un répertoire.</C>
+
+

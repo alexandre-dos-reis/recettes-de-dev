@@ -1,0 +1,28 @@
+---
+sort: 71
+title: scp
+
+
+---
+
+La commande "scp" permet de copier des fichiers entre le serveur et le client ssh de manière sécurisée.
+
+<C i={`scp data 192.168.1.1:`}>Transfère le fichier data situé dans le répertoire courant vers l'hôte.</C>
+
+<C i={`scp data 192.168.1.1:information.txt`}>Transfère le fichier data situé dans le répertoire courant vers l'hôte, en le renommant information.txt.</C>
+
+<C i={`scp data 192.168.1.1:/tmp/information.txt`}>Transfère le fichier data situé dans le répertoire courant vers l'hôte dans le dossier tmp, en le renommant information.txt.</C>
+
+<C i={`scp data john@192.168.1.1:/tmp/information.txt`}>Transfère le fichier data situé dans le répertoire courant vers l'hôte, en tant qu'utilisateur John, dans le dossier tmp, en le renommant information.txt.</C>
+
+<C i={`scp foo.txt john@remotehost.example.com:`}>Transfère le fichier foo.txt situé dans le répertoire courant vers le home du compte john de la machine remotehost.example.com.</C>
+
+<C i={`scp john@remotehost.example.com:foo.txt ./`}>Récupère le fichier foo.txt situé dans le home du répertoire du compte john pour le copier dans le répertoire courant.</C>
+
+<C i={`scp john@remotehost.example.com:/backups/*.sql backups/`}>Récupérer les fichiers .sql situés dans le répertoire backups pour le copier dans le sous-répertoire backups.</C>
+
+<C i={`scp -P 17654 john@remotehost:/files/ files/`}>Récupérer les fichiers via un autre port (17654) que le port par défaut (22).</C>
+
+<C i={`scp -r mails/ john@remotehost:`}>Transfère l'intégralité du répertoire mails.</C>
+
+

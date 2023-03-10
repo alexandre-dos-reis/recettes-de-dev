@@ -1,0 +1,20 @@
+---
+sort: 65
+title: Pandoc
+nav: pandoc
+
+---
+
+Si vous avez besoin de convertir des fichiers d'un format de balisage à un autre, **pandoc** est votre couteau suisse. Pandoc peut entre autres convertir les formats suivants : docx, csv, html, markdown, latex, pdf, json.
+
+<C i={`pandoc --list-input-formats`}>Affiche tous les formats d'entrée.</C>
+
+<C i={`pandoc --list-output-formats`}>Affiche tous les formats de sortie.</C>
+
+<C i={`pandoc -f html -t markdown hello.html`}>Converti un fichier `html` en `markdown`, `-f` est l'option pour le format d'entrée tandis que `-t` désigne le format de sortie.</C>
+
+<C i={`pandoc -f html -t markdown https://www.fsf.org`}>Converti une page `html` en ligne vers un fichier `markdown`.</C>
+
+<C i={`for i in *.docx ; do echo "$i" && pandoc -f docx -t markdown $i -o $i.md ; done`}>Utiliser une boucle pour convertir plusieurs fichiers en même temps.</C>
+
+

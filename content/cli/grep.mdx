@@ -1,0 +1,26 @@
+---
+sort: 18
+title: grep
+
+
+---
+
+La commande `grep` permet de rechercher une chaîne de caractères ou un motif dans un fichier.
+
+<C i={`grep -v`}>Affiche les lignes ne contenant pas la chaîne.</C>
+
+<C i={`grep -c`}>Compte le nombre de lignes contenant la chaîne.</C>
+
+<C i={`grep -n`}>Retourne les lignes préfixées par leur numéro.</C>
+
+<C i={`grep -x`}>Ligne correspondant exactement à la chaîne.</C>
+
+<C i={`grep -l`}>Affiche le nom des fichiers qui contiennent la chaîne.</C>
+
+<C i={`grep 'text' foo.txt`}>Recherche l'occurrence `text` dans le fichier foo.txt.</C>
+
+<C i={`grep -nri 'foobar' /project`}>Recherche toutes les occurrences de `foobar` dans le répertoire `/project`.</C>
+
+<C i={`grep -nri '\(foo\|bar\|baz\)' /project`}>Recherche toutes les occurrences à `foo`, `bar` et `baz` dans le répertoire `/project`.</C>
+
+

@@ -1,0 +1,20 @@
+---
+sort: 69
+title: nmap
+
+image: 1f39d4b1-78b6-4a35-a346-38212217e4fd
+---
+
+[Nmap](https://nmap.org/man/fr) est un scanner de ports libre créé par Fyodor et distribué par [Insecure.org](https://insecure.org). Il est conçu pour détecter les ports ouverts, identifier les services hébergés et obtenir des informations sur le système d'exploitation d'un ordinateur distant. Ce logiciel est devenu une référence pour les administrateurs réseaux car l'audit des résultats de Nmap fournit des indications sur la sécurité d'un réseau. Il est disponible sous Windows, Mac OS X, Linux, BSD et Solaris.
+
+<C i={`nmap -v 172.16.0.1`}>Le mode verbeux !</C>
+
+<C i={`nmap 172.16.0.1`}>Scan de l'hôte 172.16.0.1</C>
+
+<C i={`nmap 172.16.0.0/16`}>Scan tout le réseau 172.16.0.0/16</C>
+
+<C i={`nmap -sS -O 172.16.0.1`}>Lance un scan furtif (stealth SYN scan), essaie aussi de déterminer le système d'exploitation sur chaque hôte actif. Requiert des priilèges.</C>
+
+<C i={`nmap -sLPS 172.16.0.1`}>Affiche tous les ports ouverts pour une machine.</C>
+
+

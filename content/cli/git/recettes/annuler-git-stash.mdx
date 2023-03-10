@@ -1,0 +1,14 @@
+---
+sort: 1
+title: Annuler les résultats d'un conflit causé par git stash
+nav: Annuler git stash
+---
+
+- To unstage the merge conflicts: git reset HEAD . (note the trailing dot)
+- To save the conflicted merge (just in case): git stash
+- To return to master: git checkout master
+- To pull latest changes: git fetch upstream; git merge upstream/master
+- To correct my new branch: git checkout new-branch; git rebase master
+- To apply the correct stashed changes (now 2nd on the stack): git stash apply stash@{1}
+
+source: https://stackoverflow.com/questions/22207256/undo-git-stash-pop-that-results-in-merge-conflict

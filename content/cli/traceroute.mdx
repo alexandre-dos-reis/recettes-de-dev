@@ -1,0 +1,14 @@
+---
+sort: 79
+title: traceroute
+
+
+---
+
+Permet d'identifier les routeurs empruntés jusqu'à un hôte et affiche des informations. Equivalent à la commande `tracert` sur Windows.
+
+<C i={`traceroute google.fr`}>Permet d'afficher les routeurs parcourus pour aller jusqu'à google.fr, affiche le nom d'hôte, l'IP et affiche le temps pour 3 tentatives de connexion au routeur. Tous les routeurs ne retournent pas ces informations, d'où l'apparition des `* * *`.</C>
+
+<C i={`traceroute -q 1 google.fr`}>Permet de spécifier le nombre de connexion à effectuer pour chaque routeur.</C>
+
+

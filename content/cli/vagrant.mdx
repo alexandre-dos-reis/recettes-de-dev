@@ -1,0 +1,30 @@
+---
+sort: 56
+title: Vagrant
+nav: vagrant
+image: 9c51b74a-3ba3-4c17-8055-5e6a9ab3ac91
+---
+
+**Vagrant** est un logiciel libre et open-source pour la création et la configuration des environnements de développement virtuel. Il peut être considéré comme un wrapper autour de logiciels de virtualisation comme VirtualBox.
+
+<C i={`vagrant --help`}>Renvoi la version de Vagrant.</C>
+
+<C i={`vagrant init`}>Initialise le dossier courant en un environnement Vagrant en créant fichier vagranfile, si celui-ci n'existe pas.</C>
+
+<C i={`vagrant init debian/bullseye64`}>Similaire à la commande précédente mais modifie le fichier Vagrant pour y inclure l'image debian/bullseye64.</C>
+
+<C i={`vagrant up`}>Parcours le fichier Vagrantfile, télécharge si besoin la box et démarre la machine virtuelle.</C>
+
+<C i={`vagrant ssh`}>Permet de se connecter en SSH à la VM actuellement démarrée.</C>
+
+<C i={`vagrant ssh-config`}>Permet d'obtenir la configuration SSH courante.</C>
+
+<C i={`vagrant destroy`}>Détruit la machine mais n'efface pas la box.</C>
+
+<C i={`vagrant box list`}>Permet d'afficher toutes les boites présent sur la machine hôte.</C>
+
+<C i={`vagrant box remove debian/bullseye64`}>Supprime la boite debian/bullseye64</C>
+
+<C i={`vagrant global-status`}>Renvoi des informations sur toutes les VM lancées par Vagrant.</C>
+
+

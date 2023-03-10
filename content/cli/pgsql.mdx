@@ -1,0 +1,14 @@
+---
+sort: 63
+title: PostGreSQL
+nav: pgsql
+
+---
+
+PostgreSQL est un système de gestion de base de données relationnelle et objet (SGBDRO). C'est un outil libre disponible selon les termes d'une licence de type BSD.
+
+<C i={`pg_dump -U user db --no-owner`}>Effectue un dump de la base de donnée nommée `db` en utilisant l'utilisateur `user`. À noter que l'option `--no-owner` assure que le backup pourra être importé dans n'importe quelle base de données, peu importe les privilèges de l'utilisateur.</C>
+
+<C i={`gunzip -c ./db-backups/22-10-21.sql.gz | psql -U user db`}>Restaure la base de donnée nommé `db` avec l'utilisateur `user`.</C>
+
+

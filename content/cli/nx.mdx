@@ -1,0 +1,19 @@
+---
+sort: 49
+title: Nx
+nav: nx
+
+---
+
+[Nx](https://nx.dev/) est un système intelligent de construction de projet de développement, rapide et extensible avec un support monorepo et de puissantes intégrations.
+Un monorepo est un dépôt git unique qui contient le code source de plusieurs applications et bibliothèques, ainsi que les outils correspondants.
+
+<C i={`pnpm create nx-workspace`}>Permet de créer un workspace Nx avec [pnpm](https://pnpm.io/fr/) comme gestionnaire de paquet NodeJS.</C>
+
+<C i={`nx generate module todo -p backend`}>Crée un module nommé `todo` pour le projet backend, NestJS et Angular implémente cette commande.</C>
+
+<C i={`nx serve backend`}>Démarre le projet `backend` en développement.</C>
+
+<C i={`nx run-many --target=serve --projects=backend,frontend`}>Permet de démarrer en simultané la commande `serve` sur les projects `backend` et `frontend`.</C>
+
+

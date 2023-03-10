@@ -1,0 +1,32 @@
+---
+sort: 25
+title: systemctl
+
+
+---
+
+Cette commande permet de gérer les services et procéssus en arrière plan ou daemon. Elle remplace les commandes `service`, `chkconfig` ou encore `init`.
+
+<C i={`systemctl start $daemon`}>Démarre le service.</C>
+
+<C i={`systemctl stop $daemon`}>Arrête puis démarre le service.</C>
+
+<C i={`systemctl reload $daemon`}>Recharge le service sans l'arrêter.</C>
+
+<C i={`systemctl status $daemon`}>Affiche le status du service.</C>
+
+<C i={`systemctl enable $daemon`}>Active le service au démarrage du système.</C>
+
+<C i={`systemctl disable $daemon`}>Efface le service au démarrage du système.</C>
+
+<C i={`systemctl is-enabled $daemon`}>Permet de voir si le service est actif au démarrage du système.</C>
+
+<C i={`systemctl list-units --type=service --all`}>Permet de voir la liste des services et s'ils sont actifs au démarrage du système.</C>
+
+<C i={`systemctl is-failed $daemon`}>Retourne la valeur active si le service fonctionne sinon failed.</C>
+
+<C i={`systemctl list-units [--all] [--state=inactive] [--type=service]`}>Liste toutes les unités gérées par systemctl.</C>
+
+<C i={`conteneur[service[$daemon][action]]`}>Dans un conteneur docker, le service systemctl n'est pas implémenté.</C>
+
+
