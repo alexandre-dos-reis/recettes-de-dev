@@ -1,0 +1,37 @@
+---
+sort: 1
+title: Literal
+nav: Array<Literal>
+---
+
+## Problème
+
+```typescript
+const options = ["a", "b", "c"] as const;
+
+const func = (arg: string[]) => {
+  // ...
+};
+
+func(options); // Ceci cause une erreur
+```
+
+## Solution 1
+
+Changer le type de l'argument
+
+```typescript
+const getRandomItem = <T>(array: readonly T[]) => {
+  // ...
+};
+```
+
+## Solution 2
+
+Rendre le tableau immutable, mutable.
+
+```typescript
+func([...options]);
+```
+
+[source](https://stackoverflow.com/questions/71978472/argument-of-type-readonly-is-not-assignable-to-parameter-of-type)
