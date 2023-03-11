@@ -21,7 +21,7 @@ export default async ({
   const doc = await getDocumentBySlug(params.slug);
 
   return (
-    <article className="max-w-2xl mx-auto prose">
+    <article className="max-w-2xl mx-auto prose prose-h1:text-center prose-code:before:hidden prose-code:after:hidden">
       <header className="mt-10">
         {doc.frontmatter.image ? (
           <img src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`} />
