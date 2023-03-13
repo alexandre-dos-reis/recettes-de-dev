@@ -1,58 +1,47 @@
 import { Document } from "~/mdx/document";
-import { NavDocumentLink } from "./NavDocumentLink";
-import { navSortState } from "~/utils/store";
-import { sortAlphabetically, sortDocument } from "~/utils/functions";
-import { useCallback, useEffect } from "react";
+import { Link } from "./Link";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useSortDocument } from "~/hooks/useSortDocument";
+import { removeLastSlug } from "~/utils/functions";
 
 interface Props {
-  docs: Array<Document>;
+  doc: Document;
   pathname: string;
   position: number;
 }
 
-export const NavNode = ({ docs, pathname, position }: Props) => {
-  const pathNode = pathname.split("/")[position];
-  const currentDoc = docs.find((x) => x.node === pathNode);
-  const lastNode = pathname.split("/").at(-1);
-  const [navSort] = navSortState();
-
-  const sort = useCallback(
-    (a: Document, b: Document) =>
-      navSort === "alphabetically"
-        ? sortAlphabetically(a, b)
-        : sortDocument(a, b),
-    [navSort]
-  );
+export const NavNode = ({ doc, pathname, position }: Props) => {
+  const [ref] = useAutoAnimate();
+  const sortDocs = useSortDocument();
 
   return (
     <>
-      <div>
-        {currentDoc && currentDoc?.children ? (
-          <NavDocumentLink doc={currentDoc} pathname={pathname} />
-        ) : (
-          docs.sort(sort).map((d) => (
-            <NavDocumentLink key={d.id} doc={d} pathname={pathname}>
-              {d.children ? "> " : ""}
-            </NavDocumentLink>
-          ))
-        )}
-      </div>
-
-      {currentDoc?.node === lastNode ? (
-        <div className="ml-3">
-          {currentDoc?.children?.sort(sort).map((d) => (
-            <NavDocumentLink key={d.id} doc={d} pathname={pathname}>
-              {d.children ? "> " : ""}
-            </NavDocumentLink>
-          ))}
-        </div>
-      ) : (
-        <div className="ml-3">
-          <NavNode
-            docs={currentDoc?.children ?? []}
-            pathname={pathname}
-            position={position + 1}
-          />
+      <Link href={doc.slug} className="block">
+        {doc.frontmatter.nav ?? doc.frontmatter.title}
+      </Link>
+      {!doc.children ? null : (
+        <div className="ml-3" ref={ref}>
+          {doc.children
+            .filter((d) => {
+              if (doc.slug === pathname) {
+                return true;
+              } else {
+                if (d.children && pathname.startsWith(d.slug)) {
+                  return true;
+                } else {
+                  return false
+                }
+              }
+            })
+            .sort(sortDocs)
+            .map((d) => (
+              <NavNode
+                key={d.id}
+                doc={d}
+                pathname={pathname}
+                position={position + 1}
+              />
+            ))}
         </div>
       )}
     </>

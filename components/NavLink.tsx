@@ -8,7 +8,7 @@ interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {
   pathname?: string;
 }
 
-export const NavDocumentLink = ({ doc, pathname, children, ...p }: Props) => {
+export const NavLink = ({ doc, pathname, children, ...p }: Props) => {
   return (
     <Link
       {...p}
