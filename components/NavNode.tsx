@@ -29,7 +29,8 @@ export const NavNode = ({ doc, pathname, position }: Props) => {
                 if (d.children && pathname.startsWith(d.slug)) {
                   return true;
                 } else {
-                  return false
+                  // 
+                  return false;
                 }
               }
             })
