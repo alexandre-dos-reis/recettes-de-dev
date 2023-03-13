@@ -21,9 +21,9 @@ export const NavNode = ({ doc, pathname, position }: Props) => {
       {!doc.children ? null : (
         <div className="ml-3" ref={ref}>
           {doc.children
-            .filter((d) =>
-              pathname === doc.slug ? true : pathname.startsWith(d.slug)
-            )
+            // .filter((d) =>
+            //   pathname === doc.slug ? true : pathname.startsWith(d.slug)
+            // )
             .sort(sortDocs)
             .map((d) => (
               <NavNode

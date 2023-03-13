@@ -1,7 +1,6 @@
 "use client";
 
 import { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import { Link } from "./Link";
 
 export const CustomH2 = ({
   children,
@@ -15,14 +14,14 @@ export const CustomH2 = ({
 
   return (
     <h2
-      tabIndex={-1}
       {...props}
+      tabIndex={-1}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
       className="relative"
     >
       <a
-        className={`inline float-none text-sm h-6 ${
+        className={`absolute top-0 -left-7 p-1  rotate-45 float-none text-sm ${
           show ? "opacity-100" : "opacity-0"
         }`}
         href={`#${id}`}
@@ -32,7 +31,7 @@ export const CustomH2 = ({
         onMouseLeave={() => setShow(false)}
       >
         <svg
-          className="inline-block"
+          className="inline-block h-6"
           focusable="false"
           aria-hidden="true"
           viewBox="0 0 24 24"
