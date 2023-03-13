@@ -1,0 +1,17 @@
+---
+sort: 100
+title: Recettes
+---
+
+## Annuler les résultats d'un conflit causé par git stash
+
+<C i={`git reset HEAD .`}>To unstage the merge conflicts</C>
+<C i={`git stash`}>To save the conflicted merge (just in case)</C>
+<C i={`git checkout master`}>To return to master</C>
+<C i={`git fetch upstream; git merge upstream/master`}>
+  To pull latest changes
+</C>
+<C i={`git checkout new-branch; git rebase master`}>To correct my new branch</C>
+<C i={`git stash apply stash@{1}`}>
+  To apply the correct stashed changes (now 2nd on the stack)
+</C>

@@ -7,7 +7,6 @@ import {
 import { PageParamsProps } from "~/types/generics";
 
 export const generateStaticParams = async () => {
-  
   // UGLY !
   // RangeError: Maximum call stack size exceeded on 404...
   return getRecursiveSlugs(
@@ -22,17 +21,15 @@ export default async ({
   const doc = await getDocumentBySlug(params.slug);
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <section>
+    <article className="max-w-2xl mx-auto prose prose-h1:text-center prose-code:before:hidden prose-code:after:hidden">
+      <header className="mt-10">
         {doc.frontmatter.image ? (
           <img src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`} />
         ) : (
           <h1>{doc.frontmatter.title}</h1>
         )}
-      </section>
-      <section>
-        <div>{doc.content}</div>
-      </section>
-    </div>
+      </header>
+      <main>{doc.content}</main>
+    </article>
   );
 };
