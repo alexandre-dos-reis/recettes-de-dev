@@ -18,7 +18,7 @@ export const NavLink = ({ doc, pathname, children, ...p }: Props) => {
       }`}
     >
       {children}
-      {doc.frontmatter.nav ?? doc.frontmatter.title}
+      {doc.children ? '> ' : ''}{doc.frontmatter.nav ?? doc.frontmatter.title}
     </Link>
   );
 };

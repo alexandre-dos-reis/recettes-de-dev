@@ -3,6 +3,7 @@ import { Link } from "./Link";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useSortDocument } from "~/hooks/useSortDocument";
 import { removeLastSlug } from "~/utils/functions";
+import { NavLink } from "./NavLink";
 
 interface Props {
   doc: Document;
@@ -16,14 +17,12 @@ export const NavNode = ({ doc, pathname, position }: Props) => {
 
   return (
     <>
-      <Link href={doc.slug} className="block">
-        {doc.frontmatter.nav ?? doc.frontmatter.title}
-      </Link>
+      <NavLink doc={doc} />
       {!doc.children ? null : (
         <div className="ml-3" ref={ref}>
           {doc.children
             .filter((d) =>
-              doc.slug === pathname ? true : pathname.startsWith(d.slug)
+              pathname === doc.slug ? true : pathname.startsWith(d.slug)
             )
             .sort(sortDocs)
             .map((d) => (
