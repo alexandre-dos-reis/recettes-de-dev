@@ -3,6 +3,7 @@
 ## Resources
 
 - [leagcy command v4](https://github.com/alexandre-dos-reis/commands-v4)
+- [Creating a Rehype Syntax Highlighting Plugin](https://www.timlrx.com/blog/creating-a-rehype-syntax-highlighting-plugin)
 
 
 ## Todos
