@@ -6,7 +6,8 @@
 
 
 ## Todos
-
+- [ ] Use unified ecosystem to optimize the nav tree and mdx serialize
+  - use `@mdx-js/mdx`, `to-vfile`.
 - [ ] Turn markdown into a search api
     - https://www.npmjs.com/package/markdown-json
     - https://eindm.de/en/blog/fuzzy-search-nextjs-api-routes
