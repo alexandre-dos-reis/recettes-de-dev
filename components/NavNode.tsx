@@ -18,28 +18,20 @@ export const NavNode = ({ doc, pathname, position }: Props) => {
   const isCurrentDocHasChildren = choosenDoc?.children ? true : false;
   const pathnameLenght = pathname.split("/").length;
 
-  // console.log({ position, isCurrentDocHasChildren });
-
   return (
     <>
       <NavLink doc={doc} pathname={pathname} />
       {!doc.children ? null : (
         <div className="ml-3" ref={ref}>
           {doc.children
-            .filter((d) => {
-              if (pathname === doc.slug) {
-                return true;
-              } else {
-                if (
-                  position + 1 < pathnameLenght &&
+            .filter(
+              (d) =>
+                pathname === doc.slug ||
+                (position + 1 < pathnameLenght &&
                   !isCurrentDocHasChildren &&
-                  d.slug.startsWith(removeLastSlug(pathname))
-                ) {
-                  return true;
-                }
-                return pathname.startsWith(d.slug);
-              }
-            })
+                  d.slug.startsWith(removeLastSlug(pathname))) ||
+                pathname.startsWith(d.slug)
+            )
             .sort(sortDocs)
             .map((d) => (
               <NavNode
