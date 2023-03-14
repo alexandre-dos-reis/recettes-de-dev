@@ -1,10 +1,17 @@
 ---
 sort: 1
-title: Literal
-nav: Array<Literal>
+title: Recettes
 ---
 
-## Problème
+## Passer une tableau de literals en argument d'un function.
+
+Voici une erreur commune:
+
+```
+Argument of type 'readonly ...' is not assignable to parameter of type '...[]'
+```
+
+### Problème
 
 ```typescript
 const options = ["a", "b", "c"] as const;
@@ -14,11 +21,11 @@ const func = (array: string[]) => {
 };
 
 func(options);
-// ^^^^^^^^^^ Error: Argument of type 'readonly ["a", "b", "c"]' 
+// ^^^^^^^^^^ Error: Argument of type 'readonly ["a", "b", "c"]'
 // is not assignable to parameter of type 'string[]'.
 ```
 
-## Solution 1
+### Solution 1
 
 Changer le type de l'argument
 
@@ -28,7 +35,7 @@ const func = <T>(array: readonly T[]) => {
 };
 ```
 
-## Solution 2
+### Solution 2
 
 Placer le tableau immutable `readonly` dans un tableau mutable en utilisant le spread operator.
 
