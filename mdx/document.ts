@@ -5,7 +5,6 @@ import {
   getSafeFrontmatter,
 } from "./compiled";
 import { readdir } from "node:fs/promises";
-import { getFrontmatter } from "./frontmatter";
 
 const frontmatterSchema = z.object({
   title: z.string(),
