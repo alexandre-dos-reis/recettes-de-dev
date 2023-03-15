@@ -1,8 +1,13 @@
 import { z } from "zod";
-import { asyncFileExists, getSafeCompiledMdx } from "./compiled";
+import {
+  asyncFileExists,
+  getSafeCompiledMdx,
+  getSafeFrontmatter,
+} from "./compiled";
 import { readdir } from "node:fs/promises";
+import { getFrontmatter } from "./frontmatter";
 
-const documentFrontmatterSchema = z.object({
+const frontmatterSchema = z.object({
   title: z.string(),
   sort: z.number().optional(),
   draft: z.boolean().optional(),
@@ -10,17 +15,19 @@ const documentFrontmatterSchema = z.object({
   nav: z.string().optional(),
 });
 
+const mdxSchema = z.object({});
+
 export interface Document {
   id: string;
   slug: string;
   node: string;
   children?: Document[];
-  frontmatter: z.infer<typeof documentFrontmatterSchema>;
+  frontmatter: z.infer<typeof frontmatterSchema>;
 }
 
 const createDocument = (
   path: string,
-  frontmatter: z.infer<typeof documentFrontmatterSchema>
+  frontmatter: z.infer<typeof frontmatterSchema>
 ): Document => {
   const arraySlug = path.replace(".mdx", "").replace("/index", "").split("/");
   arraySlug.shift();
@@ -34,7 +41,7 @@ const createDocument = (
 };
 
 const getMdxDocument = async (pathFile: string) => {
-  return await getSafeCompiledMdx(pathFile, documentFrontmatterSchema);
+  return await getSafeCompiledMdx(pathFile, frontmatterSchema);
 };
 
 export const getDocumentTree = async (directory: string) => {
@@ -42,17 +49,13 @@ export const getDocumentTree = async (directory: string) => {
 
   if (content.includes("index.mdx")) {
     const document = await getPublishedDocument(`${directory}/index.mdx`);
-    if (!document) {
-      return null;
-    } else {
+    if (document) {
       document.children = (
         await content
           .filter((x) => x !== "index.mdx")
           .reduce(async (acc, file) => {
             const path = `${directory}/${file}`;
-            const isMDX = path.endsWith(".mdx");
-
-            const document = isMDX
+            const document = path.endsWith(".mdx")
               ? await getPublishedDocument(path)
               : await getDocumentTree(path);
 
@@ -71,7 +74,7 @@ export const getDocumentTree = async (directory: string) => {
 };
 
 const getPublishedDocument = async (filename: string) => {
-  const { frontmatter } = await getMdxDocument(filename);
+  const frontmatter = await getSafeFrontmatter(filename, frontmatterSchema);
 
   if (frontmatter.draft) {
     return null; // The file is a draft, skipping...
