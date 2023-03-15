@@ -1,4 +1,4 @@
-# recettes.dev
+# recettes-dev
 
 ## Resources
 
