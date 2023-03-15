@@ -1,12 +1,9 @@
 import { z } from "zod";
-import {
-  asyncFileExists,
-  getSafeCompiledMdx,
-  getSafeFrontmatter,
-} from "./compiled";
-import { readdir } from "node:fs/promises";
+import { getSafeMdx } from "./mdx";
+import { readdir, stat } from "node:fs/promises";
+import { getSafeFrontmatter } from "./frontmatter";
 
-const frontmatterSchema = z.object({
+const documentSchema = z.object({
   title: z.string(),
   sort: z.number().optional(),
   draft: z.boolean().optional(),
@@ -14,19 +11,21 @@ const frontmatterSchema = z.object({
   nav: z.string().optional(),
 });
 
-const mdxSchema = z.object({});
+export const asyncFileExists = async (path: string) => {
+  return !!(await stat(path).catch((e) => false));
+};
 
 export interface Document {
   id: string;
   slug: string;
   node: string;
   children?: Document[];
-  frontmatter: z.infer<typeof frontmatterSchema>;
+  frontmatter: z.infer<typeof documentSchema>;
 }
 
 const createDocument = (
   path: string,
-  frontmatter: z.infer<typeof frontmatterSchema>
+  frontmatter: z.infer<typeof documentSchema>
 ): Document => {
   const arraySlug = path.replace(".mdx", "").replace("/index", "").split("/");
   arraySlug.shift();
@@ -40,7 +39,7 @@ const createDocument = (
 };
 
 const getMdxDocument = async (pathFile: string) => {
-  return await getSafeCompiledMdx(pathFile, frontmatterSchema);
+  return await getSafeMdx(pathFile, documentSchema);
 };
 
 export const getDocumentTree = async (directory: string) => {
@@ -73,7 +72,7 @@ export const getDocumentTree = async (directory: string) => {
 };
 
 const getPublishedDocument = async (filename: string) => {
-  const frontmatter = await getSafeFrontmatter(filename, frontmatterSchema);
+  const frontmatter = await getSafeFrontmatter(filename, documentSchema);
 
   if (frontmatter.draft) {
     return null; // The file is a draft, skipping...
