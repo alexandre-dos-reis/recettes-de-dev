@@ -1,5 +1,4 @@
 import { Document } from "~/mdx/document";
-import { Link } from "./Link";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useSortDocument } from "~/hooks/useSortDocument";
 import { removeLastSlug } from "~/utils/functions";
