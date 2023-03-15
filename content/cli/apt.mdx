@@ -1,30 +1,47 @@
 ---
 sort: 22
 title: apt
-
-
 ---
 
 L'installation et la désinstallation de paquets sous Debian, Ubuntu et distribution dérivées peut se faire grâce à la commande "apt".
 
-<C i={`apt update`}>Met à jour la liste des fichiers disponibles dans les dépôts APT présents dans le fichier de configuration `/etc/apt/sources.list`. L'exécuter régulièrement est une bonne pratique, afin de maintenir à jour votre liste de paquets disponibles.</C>
+<C i={`apt update`}>
+  Met à jour la liste des fichiers disponibles dans les dépôts APT présents dans
+  le fichier de configuration `/etc/apt/sources.list`. L'exécuter régulièrement
+  est une bonne pratique, afin de maintenir à jour votre liste de paquets
+  disponibles.
+</C>
 
-<C i={`apt upgrade`}>Met à jour tous les paquets installés sur le système vers les dernières versions.</C>
+<C i={`apt upgrade`}>
+  Met à jour tous les paquets installés sur le système vers les dernières
+  versions.
+</C>
 
 <C i={`apt install samba`}>Installation du paquet samba.</C>
 
-<C i={`apt install foo=2.2-1`}>Installation du paquet foo dans sa version 2.2-1.</C>
+<C i={`apt install foo=2.2-1`}>
+  Installation du paquet foo dans sa version 2.2-1.
+</C>
 
-<C i={`apt remove samba`}>Désinstallation du paquet samba tout en laissant les fichiers de configuration.</C>
+<C i={`apt remove samba`}>
+  Désinstallation du paquet samba tout en laissant les fichiers de
+  configuration.
+</C>
 
-<C i={`apt purge samba`}>Suppression complète du paquet samba et de ses fichiers de configuration.</C>
+<C i={`apt purge samba`}>
+  Suppression complète du paquet samba et de ses fichiers de configuration.
+</C>
 
-<C i={`apt-cache policy php5`}>Récupération d'informations sur l'état du paquet php5</C>
+<C i={`apt-cache policy php5`}>
+  Récupération d'informations sur l'état du paquet php5
+</C>
 
-<C i={`dpkg -l | grep php`}>Lister tous les paquets php installés sur la machine</C>
+<C i={`dpkg -l | grep php`}>
+  Lister tous les paquets php installés sur la machine
+</C>
 
 <C i={`dpkg-reconfigure rsyslog-mysql`}>Reconfigure le paquet rsyslog-mysql</C>
 
-<C i={`apt-cache search php`}>Effectue une recherche dans les dépôts avec pour nom `php`.</C>
-
-
+<C i={`apt-cache search php`}>
+  Effectue une recherche dans les dépôts avec pour nom `php`.
+</C>
