@@ -1,4 +1,4 @@
-# Next App Unix Command
+# recettes.dev
 
 ## Resources
 
