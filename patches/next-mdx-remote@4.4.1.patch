@@ -1,0 +1,90 @@
+diff --git a/dist/rsc.d.ts b/dist/rsc.d.ts
+index 5985b770ea58bf1cb73e228ea2471b128682bd0a..caca6de6951d381aba6755b33ad61e4eea8f607d 100644
+--- a/dist/rsc.d.ts
++++ b/dist/rsc.d.ts
+@@ -2,28 +2,35 @@
+  * Copyright (c) HashiCorp, Inc.
+  * SPDX-License-Identifier: MPL-2.0
+  */
+-import React from 'react';
+-import { MDXRemoteSerializeResult, SerializeOptions } from './types';
+-import { VFileCompatible } from 'vfile';
+-import { MDXProvider } from '@mdx-js/react';
++import React from "react";
++import { MDXRemoteSerializeResult, SerializeOptions } from "./types";
++import { VFileCompatible } from "vfile";
++import { MDXProvider } from "@mdx-js/react";
+ export declare type MDXRemoteProps = {
+-    source: VFileCompatible;
+-    options?: SerializeOptions;
+-    /**
+-     * An object mapping names to React components.
+-     * The key used will be the name accessible to MDX.
+-     *
+-     * For example: `{ ComponentName: Component }` will be accessible in the MDX as `<ComponentName/>`.
+-     */
+-    components?: React.ComponentProps<typeof MDXProvider>['components'];
++  source: VFileCompatible;
++  options?: SerializeOptions;
++  /**
++   * An object mapping names to React components.
++   * The key used will be the name accessible to MDX.
++   *
++   * For example: `{ ComponentName: Component }` will be accessible in the MDX as `<ComponentName/>`.
++   */
++  components?: React.ComponentProps<typeof MDXProvider>["components"];
+ };
+ export { MDXRemoteSerializeResult };
+ export declare type CompileMDXResult<TFrontmatter = Record<string, unknown>> = {
+-    content: React.ReactElement;
+-    frontmatter: TFrontmatter;
++  content: React.ReactElement;
++  frontmatter: TFrontmatter;
++  headings: Array<{ depth: number; value: string }>
+ };
+-export declare function compileMDX<TFrontmatter = Record<string, unknown>>({ source, options, components, }: MDXRemoteProps): Promise<CompileMDXResult<TFrontmatter>>;
++export declare function compileMDX<TFrontmatter = Record<string, unknown>>({
++  source,
++  options,
++  components,
++}: MDXRemoteProps): Promise<CompileMDXResult<TFrontmatter>>;
+ /**
+  * Renders compiled source from next-mdx-remote/serialize.
+  */
+-export declare function MDXRemote(props: MDXRemoteProps): Promise<React.ReactElement<any, string | React.JSXElementConstructor<any>>>;
++export declare function MDXRemote(
++  props: MDXRemoteProps
++): Promise<React.ReactElement<any, string | React.JSXElementConstructor<any>>>;
+diff --git a/dist/rsc.js b/dist/rsc.js
+index 8ab7d78ff1b48f5f3a93b2b43dbd8bc32ca74719..019bbb5bc153092efd891541be567cd64fe659eb 100644
+--- a/dist/rsc.js
++++ b/dist/rsc.js
+@@ -2696,7 +2696,8 @@ async function serialize(source, { scope = {}, mdxOptions = {}, parseFrontmatter
+     let compiledSource = String(compiledMdx);
+     return {
+         compiledSource,
+-        frontmatter: (vfile.data.matter ?? {}),
++		frontmatter: (vfile.data.matter ?? {}),
++		headings: (vfile.data.headings ?? []),
+         scope: scope,
+     };
+ }
+@@ -2706,7 +2707,7 @@ async function serialize(source, { scope = {}, mdxOptions = {}, parseFrontmatter
+  * SPDX-License-Identifier: MPL-2.0
+  */
+ async function compileMDX({ source, options, components = {}, }) {
+-    const { compiledSource, frontmatter, scope } = await serialize(source, options, 
++    const { compiledSource, frontmatter, scope, headings } = await serialize(source, options, 
+     // Enable RSC importSource
+     true);
+     // if we're ready to render, we can assemble the component tree and let React do its thing
+@@ -2726,7 +2727,8 @@ async function compileMDX({ source, options, components = {}, }) {
+     const Content = hydrateFn.apply(hydrateFn, values).default;
+     return {
+         content: React.createElement(Content, { components: components }),
+-        frontmatter,
++		frontmatter,
++		headings
+     };
+ }
+ /**
