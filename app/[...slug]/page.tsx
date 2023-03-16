@@ -19,7 +19,6 @@ export default async ({
   params,
 }: PageParamsProps<typeof generateStaticParams>) => {
   const doc = await getDocumentBySlug(params.slug);
-
   return (
     <article className="max-w-2xl mx-auto prose prose-h1:text-center prose-code:before:hidden prose-code:after:hidden">
       <header className="mt-10">
@@ -30,6 +29,15 @@ export default async ({
         )}
       </header>
       <main>{doc.content}</main>
+      {doc.headings.length > 0 ? (
+        <nav>
+          <ul>
+            {doc.headings.map((h) => (
+              <li key={h.value} className={`${h.depth}`}>{h.value}</li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
     </article>
   );
 };

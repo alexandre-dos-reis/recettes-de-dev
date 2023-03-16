@@ -1,9 +1,10 @@
 import { z } from "zod";
-import { getSafeMdx } from "./mdx";
-import { readdir, stat } from "node:fs/promises";
+import { getSafeMdx } from "./compiled-mdx";
+import { readdir } from "node:fs/promises";
 import { getSafeFrontmatter } from "./frontmatter";
+import { asyncFileExists } from "./utils";
 
-const documentSchema = z.object({
+const frontmatterDocumentSchema = z.object({
   title: z.string(),
   sort: z.number().optional(),
   draft: z.boolean().optional(),
@@ -11,21 +12,17 @@ const documentSchema = z.object({
   nav: z.string().optional(),
 });
 
-export const asyncFileExists = async (path: string) => {
-  return !!(await stat(path).catch((e) => false));
-};
-
 export interface Document {
   id: string;
   slug: string;
   node: string;
   children?: Document[];
-  frontmatter: z.infer<typeof documentSchema>;
+  frontmatter: z.infer<typeof frontmatterDocumentSchema>;
 }
 
 const createDocument = (
   path: string,
-  frontmatter: z.infer<typeof documentSchema>
+  frontmatter: z.infer<typeof frontmatterDocumentSchema>
 ): Document => {
   const arraySlug = path.replace(".mdx", "").replace("/index", "").split("/");
   arraySlug.shift();
@@ -36,10 +33,6 @@ const createDocument = (
     node: arraySlug.at(-1) || "",
     frontmatter,
   };
-};
-
-const getMdxDocument = async (pathFile: string) => {
-  return await getSafeMdx(pathFile, documentSchema);
 };
 
 export const getDocumentTree = async (directory: string) => {
@@ -72,7 +65,10 @@ export const getDocumentTree = async (directory: string) => {
 };
 
 const getPublishedDocument = async (filename: string) => {
-  const frontmatter = await getSafeFrontmatter(filename, documentSchema);
+  const frontmatter = await getSafeFrontmatter(
+    filename,
+    frontmatterDocumentSchema
+  );
 
   if (frontmatter.draft) {
     return null; // The file is a draft, skipping...
@@ -86,10 +82,13 @@ export const getDocumentBySlug = async (slugArray: string[]) => {
   const nonIndexFile = `content/${slug}.mdx`;
 
   if (await asyncFileExists(nonIndexFile)) {
-    return await getMdxDocument(nonIndexFile);
+    return await getSafeMdx(nonIndexFile, frontmatterDocumentSchema);
   }
 
-  return await getMdxDocument(`content/${slug}/index.mdx`);
+  return await getSafeMdx(
+    `content/${slug}/index.mdx`,
+    frontmatterDocumentSchema
+  );
 };
 
 export type Slugs = { slug: string[] }[];
