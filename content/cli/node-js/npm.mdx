@@ -1,0 +1,40 @@
+---
+sort: 2
+title: npm
+---
+
+Npm est le gestionnaire par défaut de nodeJS, son site officiel recense pas moins de 1.3 million de paquets créés par la communauté. Dans un projet NodeJS, npm manipule les fichiers `package.json` et `package-lock.json` gardant les principales informations du projets: Dépendances, versions, etc...
+
+<C i={`npm init`}>
+  Initialise un nouveau projet Node avec la création d'un fichier `package.json`
+  qui répertorie la liste des dépendances.{" "}
+</C>
+
+<C i={`npm install`}>
+  Installe toutes les dépendances présentes dans le fichier `package.json`.
+</C>
+
+<C i={`npm install dotenv`}>
+  Installe le paquet `dotenv` et le rajoute au fichier des dépendances
+  `package.json`.
+</C>
+
+<C i={`npm install -g nodemon`}>
+  Installe le paquet `nodemon` de manière globale. A la prochaine installation
+  du paquet, `npm` ne le téléchargera pas puisqu'il est installé sur le système.
+</C>
+
+<C i={`npm update`}>Met à jour les paquets en production.</C>
+
+<C i={`npm update lodash`}>Met à jour le paquet `lodash`.</C>
+
+<C i={`npm uninstall mysql`}>Désinstalle le paquet `mysql`.</C>
+
+<C i={`npx http-server`}>
+  Permet d'éxecuter le paquet `http-server` sans le télécharger et l'installer,
+  utile pour le test.
+</C>
+
+<C i={`npm run start`}>
+  Exécute la commande `start` qui est contenue dans le fichier package.json.
+</C>
