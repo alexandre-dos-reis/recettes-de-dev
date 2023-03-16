@@ -33,7 +33,7 @@ export default async ({
         <nav>
           <ul>
             {doc.headings.map((h) => (
-              <li className={`${h.depth}`}>{h.value}</li>
+              <li key={h.value} className={`${h.depth}`}>{h.value}</li>
             ))}
           </ul>
         </nav>
