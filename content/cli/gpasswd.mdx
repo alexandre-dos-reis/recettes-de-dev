@@ -1,8 +1,6 @@
 ---
 sort: 34
 title: gpasswd
-
-
 ---
 
 Permet d’affecter un mot de passe à un groupe. Ce mot de passe est soit stocké dans `/etc/group`, soit, et c’est le cas le plus courant, dans `/etc/gshadow`.
@@ -11,8 +9,11 @@ Permet d’affecter un mot de passe à un groupe. Ce mot de passe est soit stock
 
 <C i={`gpasswd -a seb test`}>Ajoute un utilisateur au groupe.</C>
 
-<C i={`gpasswd -M seb,steph test`}>Défini la liste de tous les membres du groupe.</C>
+<C i={`gpasswd -M seb,steph test`}>
+  Défini la liste de tous les membres du groupe.
+</C>
 
-<C i={`gpasswd -A admin test`}>Défini la liste des administrateurs du groupe, ceux qui pourront gérer les utilisateurs et le mot de passe de celui-ci.</C>
-
-
+<C i={`gpasswd -A admin test`}>
+  Défini la liste des administrateurs du groupe, ceux qui pourront gérer les
+  utilisateurs et le mot de passe de celui-ci.
+</C>

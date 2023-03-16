@@ -2,47 +2,82 @@
 sort: 45
 title: Uncomplicated Firewall
 nav: ufw
-
 ---
 
 Uncomplicated Firewall `ufw` est un programme pour gérer le pare-feu netfilter. UFW utilise une interface en ligne de commande avec des commandes simples pour configurer `iptables`. Toutes les commandes sont à lancer en sudo ou root !
 
-<C i={`ufw --help`} env={`#`}>Affiche une aide.</C>
+<C i={`ufw --help`} env={`#`}>
+  Affiche une aide.
+</C>
 
-<C i={`ufw status verbose`} env={`#`}>Affiche le status de UFW.</C>
+<C i={`ufw status verbose`} env={`#`}>
+  Affiche le status de UFW.
+</C>
 
-<C i={`ufw default deny incoming`} env={`#`}>Permet d'interdire toutes les connexions entrantes.</C>
+<C i={`ufw default deny incoming`} env={`#`}>
+  Permet d'interdire toutes les connexions entrantes.
+</C>
 
-<C i={`ufw default allow outgoing`} env={`#`}>Permet d'autoriser toutes les connexions sortantes.</C>
+<C i={`ufw default allow outgoing`} env={`#`}>
+  Permet d'autoriser toutes les connexions sortantes.
+</C>
 
-<C i={`ufw allow ssh`} env={`#`}>Permet d'autoriser les connexions SSH.</C>
+<C i={`ufw allow ssh`} env={`#`}>
+  Permet d'autoriser les connexions SSH.
+</C>
 
-<C i={`ufw allow 22`} env={`#`}>Permet de spécifier un port plutôt qu'un nom de service.</C>
+<C i={`ufw allow 22`} env={`#`}>
+  Permet de spécifier un port plutôt qu'un nom de service.
+</C>
 
-<C i={`ufw enable`} env={`#`}>Permet d'activer la configuration de UFW.</C>
+<C i={`ufw enable`} env={`#`}>
+  Permet d'activer la configuration de UFW.
+</C>
 
-<C i={`ufw disable`} env={`#`}>Désactive UFW.</C>
+<C i={`ufw disable`} env={`#`}>
+  Désactive UFW.
+</C>
 
-<C i={`ufw allow http`} env={`#`}>Autorise le port `80 http`.</C>
+<C i={`ufw allow http`} env={`#`}>
+  Autorise le port `80 http`.
+</C>
 
-<C i={`ufw allow 6000:6007/tcp`} env={`#`}>Ouvre une étendue de port en utilisant le protocole TCP.</C>
+<C i={`ufw allow 6000:6007/tcp`} env={`#`}>
+  Ouvre une étendue de port en utilisant le protocole TCP.
+</C>
 
-<C i={`ufw allow from 15.15.15.51`} env={`#`}>Permet d'autoriser une adresse IP précise.</C>
+<C i={`ufw allow from 15.15.15.51`} env={`#`}>
+  Permet d'autoriser une adresse IP précise.
+</C>
 
-<C i={`ufw allow from 15.15.15.51 to any port 22`} env={`#`}>Autorise une adresse IP sur le port `22`.</C>
+<C i={`ufw allow from 15.15.15.51 to any port 22`} env={`#`}>
+  Autorise une adresse IP sur le port `22`.
+</C>
 
-<C i={`ufw allow from 15.15.15.0/24`} env={`#`}>Spécifie un sous-réseau d'adresse IP.</C>
+<C i={`ufw allow from 15.15.15.0/24`} env={`#`}>
+  Spécifie un sous-réseau d'adresse IP.
+</C>
 
-<C i={`ufw allow in on eth0 to any port 80`} env={`#`}>Spécifier une règle sur la carte réseau `eth0`.</C>
+<C i={`ufw allow in on eth0 to any port 80`} env={`#`}>
+  Spécifier une règle sur la carte réseau `eth0`.
+</C>
 
-<C i={`ufw status numbered`} env={`#`}>Affiche la liste des règles avec un index.</C>
+<C i={`ufw status numbered`} env={`#`}>
+  Affiche la liste des règles avec un index.
+</C>
 
-<C i={`ufw delete 2`} env={`#`}>Efface la règle numéro 2.</C>
+<C i={`ufw delete 2`} env={`#`}>
+  Efface la règle numéro 2.
+</C>
 
-<C i={`ufw delete allow http`} env={`#`}>Permet de supprimer la règle `allow http`.</C>
+<C i={`ufw delete allow http`} env={`#`}>
+  Permet de supprimer la règle `allow http`.
+</C>
 
-<C i={`ufw reset`} env={`#`}>Réinitialise les règles.</C>
+<C i={`ufw reset`} env={`#`}>
+  Réinitialise les règles.
+</C>
 
-<C i={`ufw app list`} env={`#`}>Affiche une liste d'application avec leur port correspondant.</C>
-
-
+<C i={`ufw app list`} env={`#`}>
+  Affiche une liste d'application avec leur port correspondant.
+</C>

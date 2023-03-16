@@ -1,38 +1,61 @@
 ---
 sort: 72
 title: rsync
-
-
 ---
 
-Grâce à la commande *rsync*, vous pouvez copier des fichiers et des dossiers depuis ou vers un hôte à distance. Grâce à cela vous pouvez faire de la synchronisation de fichiers.
+Grâce à la commande _rsync_, vous pouvez copier des fichiers et des dossiers depuis ou vers un hôte à distance. Grâce à cela vous pouvez faire de la synchronisation de fichiers.
 
-<C i={`rsync source/ destination/`}>Synchronise les fichiers sources vers une destination.</C>
+<C i={`rsync source/ destination/`}>
+  Synchronise les fichiers sources vers une destination.
+</C>
 
-<C i={`rsync -a /images /backup`}>Copie en préservant les permissions et les dates des fichiers.</C>
+<C i={`rsync -a /images /backup`}>
+  Copie en préservant les permissions et les dates des fichiers.
+</C>
 
 <C i={`rsync -z /images /backup`}>Compresse les données avant le transfert.</C>
 
-<C i={`rsync -v /images /backup`}>Verbeux, affiche tout ce qui se passe pendant le transfert.</C>
+<C i={`rsync -v /images /backup`}>
+  Verbeux, affiche tout ce qui se passe pendant le transfert.
+</C>
 
-<C i={`rsync -r /images /backup`}>Copie en mode résursif, ajoute tous les sous dossiers à la sauvegarde.</C>
+<C i={`rsync -r /images /backup`}>
+  Copie en mode résursif, ajoute tous les sous dossiers à la sauvegarde.
+</C>
 
 <C i={`rsync -n /images /backup`}>Permet de tester la commande (dry-run).</C>
 
-<C i={`rsync --progress`}>Affiche la barre de progression pendant le transfert.</C>
+<C i={`rsync --progress`}>
+  Affiche la barre de progression pendant le transfert.
+</C>
 
-<C i={`rsync --delete`}>Efface les fichiers qui n'existent pas chez l'émetteur</C>
+<C i={`rsync --delete`}>
+  Efface les fichiers qui n'existent pas chez l'émetteur
+</C>
 
 <C i={`rsync --exclude=MOTIF`}>Exclut les fichiers correspondant au motif</C>
 
-<C i={`rsync -azv john@remotehost.example.com:source/ destination/`}>Récupère les nouveaux fichiers et fichiers modifiés du répertoire distant vers le répertoire local.</C>
+<C i={`rsync -azv john@remotehost.example.com:source/ destination/`}>
+  Récupère les nouveaux fichiers et fichiers modifiés du répertoire distant vers
+  le répertoire local.
+</C>
 
-<C i={`rsync -azv --delete source/ destination/`}>Synchroniser tous les fichiers, supprime aussi les fichiers qui n'existent plus sur la source.</C>
+<C i={`rsync -azv --delete source/ destination/`}>
+  Synchroniser tous les fichiers, supprime aussi les fichiers qui n'existent
+  plus sur la source.
+</C>
 
-<C i={`rsync -azv --exclude="dump/*.sql.gz" files/ backup/`}>Synchroniser tout le répertoire files sauf les fichiers .sql.gz.</C>
+<C i={`rsync -azv --exclude="dump/*.sql.gz" files/ backup/`}>
+  Synchroniser tout le répertoire files sauf les fichiers .sql.gz.
+</C>
 
-<C i={`rsync --rsh='ssh -p1234' source/ destination/`}>Effectuer un rsync sur un port spécifique.</C>
+<C i={`rsync --rsh='ssh -p1234' source/ destination/`}>
+  Effectuer un rsync sur un port spécifique.
+</C>
 
-<C i={`rsync -arv --delete --backup --backup-dir=/home/mateo21/fichiers_supprimes Images/ mateo21@IP_du_serveur:mes_backups/ -e "ssh -p 12473"`}>Effectue la copie sur un autre serveur au moyen de ssh en précisant un numéro de port.</C>
-
-
+<C
+  i={`rsync -arv --delete --backup --backup-dir=/home/mateo21/fichiers_supprimes Images/ mateo21@IP_du_serveur:mes_backups/ -e "ssh -p 12473"`}
+>
+  Effectue la copie sur un autre serveur au moyen de ssh en précisant un numéro
+  de port.
+</C>

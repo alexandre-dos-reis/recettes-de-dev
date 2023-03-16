@@ -1,18 +1,19 @@
 ---
 sort: 27
 title: umask
-
-
 ---
 
 Permet de spécifier des droits par défaut pour des fichiers ou dossiers. La valeur octale saisie supprimera les droits à partir de 777.
 
 <C i={`umask`}>Affiche le umask définit actuellement en valeur octale. </C>
 
-<C i={`umask -S`}>Affiche la valeur par défaut actuelle mais plus lisible pour les humains.</C>
+<C i={`umask -S`}>
+  Affiche la valeur par défaut actuelle mais plus lisible pour les humains.
+</C>
 
-<C i={`umask 002`}>Donne tous les droits au propriétaire et au groupe, donne les droits de lecture et d'exécution aux autres. </C>
+<C i={`umask 002`}>
+  Donne tous les droits au propriétaire et au groupe, donne les droits de
+  lecture et d'exécution aux autres.{" "}
+</C>
 
 <C i={`umask g+r`}>Ajoute les droits de lecture au groupe.</C>
-
-

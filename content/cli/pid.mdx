@@ -1,29 +1,42 @@
 ---
 sort: 40
 title: pid
-
-
 ---
 
 Commandes relatives aux processus. A chaque instance d'un programme, un Processus ID (PID) est délivré. Si le même programme est lancé plusieurs fois, plusieurs PID seront délivrés.
 
-<C i={`ps`}>Obtient la liste des processus qui tournent au moment où vous lancez la commande.</C>
+<C i={`ps`}>
+  Obtient la liste des processus qui tournent au moment où vous lancez la
+  commande.
+</C>
 
-<C i={`ps -ef`}>Affiche la liste de tous les processus lancés par tous les utilisateurs sur toutes les consoles.</C>
+<C i={`ps -ef`}>
+  Affiche la liste de tous les processus lancés par tous les utilisateurs sur
+  toutes les consoles.
+</C>
 
 <C i={`ps -ejH`}>Affiche les processus en arbre.</C>
 
-<C i={`ps -u alex`}>Affiche tous les processus lancés par l'utilisateur `alex`.</C>
+<C i={`ps -u alex`}>
+  Affiche tous les processus lancés par l'utilisateur `alex`.
+</C>
 
-<C i={`top`}>Affiche en temps réel, les informations liées aux processus selon leur taux d'utilisation du CPU.</C>
+<C i={`top`}>
+  Affiche en temps réel, les informations liées aux processus selon leur taux
+  d'utilisation du CPU.
+</C>
 
-<C i={`htop`}>Version améliorée de top mais nécessite de l'installer au préalable.</C>
+<C i={`htop`}>
+  Version améliorée de top mais nécessite de l'installer au préalable.
+</C>
 
 <C i={`hatop`}>Version de `top` pour HaProxy !</C>
 
 <C i={`ps -e|less`}>Affiche tous les processus dans une fenêtre navigable.</C>
 
-<C i={`ps -e | grep python`}>Effectue une recherche ayant pour nom `python` dans tous les processus.</C>
+<C i={`ps -e | grep python`}>
+  Effectue une recherche ayant pour nom `python` dans tous les processus.
+</C>
 
 <C i={`pidof python3`}>Retourne le processus de `python3`.</C>
 
@@ -38,5 +51,3 @@ Commandes relatives aux processus. A chaque instance d'un programme, un Processu
 <C i={`kill -9 19698`}>idem</C>
 
 <C i={`jobs`}>Affiche les programmes en cours d'éxecution</C>
-
-

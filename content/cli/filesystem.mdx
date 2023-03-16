@@ -5,36 +5,66 @@ nav: filesystem
 image: 0209bb98-3fb5-46ad-9e89-d4a6bea032b8
 ---
 
-La structure *standard* des répertoires est décrite par le [Filesystem Hierarchy Standard](https://refspecs.linuxfoundation.org/fhs.shtml) auquel la plupart des distributions Linux essaient de se conformer.
+La structure _standard_ des répertoires est décrite par le [Filesystem Hierarchy Standard](https://refspecs.linuxfoundation.org/fhs.shtml) auquel la plupart des distributions Linux essaient de se conformer.
 
-<C i={`/bin`}>Contient des programmes *exécutables* susceptibles d'être utilisés par tous les utilisateurs de la machine.</C>
+<C i={`/bin`}>
+  Contient des programmes *exécutables* susceptibles d'être utilisés par tous
+  les utilisateurs de la machine.
+</C>
 
 <C i={`/boot`}>Fichiers permettant le démarrage de Linux.</C>
 
-<C i={`/dev`}>Fichiers contenant les périphériques. En fait, ce dossier contient des sous-dossiers qui *représentent* chacun un périphérique. On y retrouve ainsi par exemple le fichier qui représente le lecteur CD.</C>
+<C i={`/dev`}>
+  Fichiers contenant les périphériques. En fait, ce dossier contient des
+  sous-dossiers qui *représentent* chacun un périphérique. On y retrouve ainsi
+  par exemple le fichier qui représente le lecteur CD.
+</C>
 
 <C i={`/etc`}>Fichiers de configuration.</C>
 
-<C i={`/home/[utilisateur]`}>Répertoires personnels des utilisateurs. C'est dans ce dossier que vous placerez vos fichiers personnels.</C>
+<C i={`/home/[utilisateur]`}>
+  Répertoires personnels des utilisateurs. C'est dans ce dossier que vous
+  placerez vos fichiers personnels.
+</C>
 
-<C i={`/lib`}>Dossier contenant les bibliothèques partagées (généralement des fichiers .so) utilisées par les programmes. C'est en fait là qu'on trouve l'équivalent des `.dll` de Windows.</C>
+<C i={`/lib`}>
+  Dossier contenant les bibliothèques partagées (généralement des fichiers .so)
+  utilisées par les programmes. C'est en fait là qu'on trouve l'équivalent des
+  `.dll` de Windows.
+</C>
 
-<C i={`/media`}>Lorsqu'un périphérique amovible (comme une carte mémoire SD ou une clé USB) est inséré dans votre ordinateur, Linux vous permet d'y accéder à partir d'un sous-dossier de media. On parle de montage.</C>
+<C i={`/media`}>
+  Lorsqu'un périphérique amovible (comme une carte mémoire SD ou une clé USB)
+  est inséré dans votre ordinateur, Linux vous permet d'y accéder à partir d'un
+  sous-dossier de media. On parle de montage.
+</C>
 
-<C i={`/mnt`}>C'est un peu pareil que media, mais pour un usage plus temporaire.</C>
+<C i={`/mnt`}>
+  C'est un peu pareil que media, mais pour un usage plus temporaire.
+</C>
 
 <C i={`/opt`}>Répertoire utilisé pour les add-ons de programmes.</C>
 
 <C i={`/proc`}>Contient des informations système.</C>
 
-<C i={`/root`}>C'est le dossier personnel de l'utilisateur `root`. Normalement, les dossiers personnels sont placés dans home, mais celui-ci fait exception. En effet, c'est le superutilisateur, le compte administrateur de la machine. Il a droit à un espace spécial.</C>
+<C i={`/root`}>
+  C'est le dossier personnel de l'utilisateur `root`. Normalement, les dossiers
+  personnels sont placés dans home, mais celui-ci fait exception. En effet,
+  c'est le superutilisateur, le compte administrateur de la machine. Il a droit
+  à un espace spécial.
+</C>
 
 <C i={`/sbin`}>Contient des programmes système importants.</C>
 
-<C i={`/tmp`}>Dossier temporaire utilisé par les programmes pour stocker des fichiers.</C>
+<C i={`/tmp`}>
+  Dossier temporaire utilisé par les programmes pour stocker des fichiers.
+</C>
 
-<C i={`/usr`}>C'est un des plus gros dossiers, dans lequel vont s'installer la plupart des programmes demandés par l'utilisateur.</C>
+<C i={`/usr`}>
+  C'est un des plus gros dossiers, dans lequel vont s'installer la plupart des
+  programmes demandés par l'utilisateur.
+</C>
 
-<C i={`/var`}>Ce dossier contient des données « variables », souvent des logs.</C>
-
-
+<C i={`/var`}>
+  Ce dossier contient des données « variables », souvent des logs.
+</C>

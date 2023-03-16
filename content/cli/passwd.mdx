@@ -1,8 +1,6 @@
 ---
 sort: 32
 title: passwd
-
-
 ---
 
 Permet de changer le mot de passe d'un utilisateur.
@@ -11,12 +9,18 @@ Permet de changer le mot de passe d'un utilisateur.
 
 <C i={`passwd`}>Change le mot de passe de l'utilisateur courant.</C>
 
-<C i={`passwd -Sa`}>Montre le statut du mot de passe pour tous les utilisateurs.</C>
+<C i={`passwd -Sa`}>
+  Montre le statut du mot de passe pour tous les utilisateurs.
+</C>
 
 <C i={`passwd John`}>Change le mot de passe de l'utilisateur `John`.</C>
 
-<C i={`passwd -d John`}>Efface le mot de passe de l'utilisateur `John`, le compte sera alors sans mot de passe.</C>
+<C i={`passwd -d John`}>
+  Efface le mot de passe de l'utilisateur `John`, le compte sera alors sans mot
+  de passe.
+</C>
 
-<C i={`passwd -e John`}>Fait expirer le mot de passe de `John`, cela a pour effet de forcer le changement de mot de passe à sa prochaine connexion.</C>
-
-
+<C i={`passwd -e John`}>
+  Fait expirer le mot de passe de `John`, cela a pour effet de forcer le
+  changement de mot de passe à sa prochaine connexion.
+</C>

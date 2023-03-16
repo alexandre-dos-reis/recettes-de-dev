@@ -1,22 +1,33 @@
 ---
 sort: 17
 title: sed
-
-
 ---
 
 La commande `sed` est un utilitaire qui parcourt un fichier texte ligne par ligne afin de lui appliquer un traitement ou un remplacement lorsque l'expression régulière est vérifiée.
 
-<C i={`sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config`}>Remplace la ligne dans le fichier de conf ssh autorisant la connexion avec mot de passe</C>
+<C
+  i={`sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config`}
+>
+  Remplace la ligne dans le fichier de conf ssh autorisant la connexion avec mot
+  de passe
+</C>
 
-<C i={`sed 's/foo/bar/' file.txt`}>Transformer la première occurrence `foo` de chaque ligne par `bar`.</C>
+<C i={`sed 's/foo/bar/' file.txt`}>
+  Transformer la première occurrence `foo` de chaque ligne par `bar`.
+</C>
 
-<C i={`sed 's/\t/ /g' file.txt`}>Transformer toutes les tabulations par deux espaces.</C>
+<C i={`sed 's/\t/ /g' file.txt`}>
+  Transformer toutes les tabulations par deux espaces.
+</C>
 
-<C i={`sed '/^#/ d' file.txt`}>Supprime toutes les lignes commançant par `#`.</C>
+<C i={`sed '/^#/ d' file.txt`}>
+  Supprime toutes les lignes commançant par `#`.
+</C>
 
-<C i={`sed '/^Bonjour/,/^Au revoir/d' file.txt`}>Supprimer toutes les lignes comprises entre les deux motifs.</C>
+<C i={`sed '/^Bonjour/,/^Au revoir/d' file.txt`}>
+  Supprimer toutes les lignes comprises entre les deux motifs.
+</C>
 
-<C i={`sed -n '/foo/p' file.txt`}>Afficher uniquement les lignes où l'expression est trouvée.</C>
-
-
+<C i={`sed -n '/foo/p' file.txt`}>
+  Afficher uniquement les lignes où l'expression est trouvée.
+</C>

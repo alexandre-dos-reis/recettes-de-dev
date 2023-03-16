@@ -1,4 +1,4 @@
-# recettes-dev
+# Recettes de dev
 
 ## Resources
 
