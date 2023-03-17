@@ -10,14 +10,20 @@ import { navFont } from "~/styles/fonts";
 interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {
   doc: Document;
   pathname: string;
+  isSelected: boolean;
 }
 
-export const NavLink = ({ doc, pathname, children, ...p }: Props) => {
-  const isSelected = pathname === doc.slug;
+export const NavLink = ({
+  doc,
+  pathname,
+  children,
+  isSelected,
+  ...p
+}: Props) => {
   const hasChildren = doc.children ? true : false;
   const href =
     isSelected && hasChildren ? doc.slug.replace(doc.node, "") : doc.slug;
-  const isChildSelected = !hasChildren && removeLastSlug(pathname) === doc.slug;
+  const isChildSelected = removeLastSlug(pathname) === doc.slug;
 
   return (
     <Link

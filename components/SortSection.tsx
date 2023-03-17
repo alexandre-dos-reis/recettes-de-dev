@@ -9,7 +9,7 @@ export const SortSection = () => {
       className={cn(
         "sticky top-0",
         "pt-10 flex pb-10  gap-5 justify-center z-20",
-        "bg-slate-100"
+        "bg-slate-100 dark:bg-[#111]"
       )}
     >
       <button type="button" onClick={() => setNavSort("default")}>

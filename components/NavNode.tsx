@@ -21,7 +21,7 @@ export const NavNode = ({ doc, pathname, position }: Props) => {
 
   return (
     <>
-      <NavLink doc={doc} pathname={pathname} />
+      <NavLink doc={doc} pathname={pathname} isSelected={isSelected} />
       {!doc.children ? null : (
         <div
           className={cn(
