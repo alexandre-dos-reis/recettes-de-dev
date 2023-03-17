@@ -6,6 +6,7 @@
 - [Creating a Rehype Syntax Highlighting Plugin](https://www.timlrx.com/blog/creating-a-rehype-syntax-highlighting-plugin)
 - [honeywell-kitchen-computer](https://4.bp.blogspot.com/-QnZPd2Dg9oM/W_BluoMy3DI/AAAAAAADW-Q/zEgHpLOBhDURqo52t0eflopXbxzbnDZawCLcBGAs/s1600/honeywell-kitchen-computer.jpg)
 - [Honeywell_316](https://en.wikipedia.org/wiki/Honeywell_316)
+- [EmojiCombos](https://emojicombos.com/cooking)
 
 ## Todos
 

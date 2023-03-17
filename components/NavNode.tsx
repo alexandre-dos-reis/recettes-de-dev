@@ -5,6 +5,7 @@ import { removeLastSlug } from "~/utils/functions";
 import { NavLink } from "./NavLink";
 import { cn } from "~/utils/cn";
 
+
 interface Props {
   doc: Document;
   pathname: string;
@@ -17,12 +18,21 @@ export const NavNode = ({ doc, pathname, position }: Props) => {
   const choosenDoc = doc.children?.find((d) => d.slug === pathname);
   const isCurrentDocHasChildren = choosenDoc?.children ? true : false;
   const pathnameLenght = pathname.split("/").length;
+  const isSelected = pathname === doc.slug;
 
   return (
     <>
       <NavLink doc={doc} pathname={pathname} />
       {!doc.children ? null : (
-        <div className={cn('ml-3 pl-2 dark:border-l-gray-100 border-l-[#111] border-l')} ref={ref}>
+        <div
+          className={cn(
+            "ml-3 pl-2 border-l",
+            isSelected
+              ? "dark:border-l-gray-100 border-l-gray-900"
+              : "border-l-gray-400"
+          )}
+          ref={ref}
+        >
           {doc.children
             .filter(
               (d) =>

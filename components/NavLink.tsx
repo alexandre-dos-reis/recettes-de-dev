@@ -5,6 +5,7 @@ import { AiTwotoneFolderAdd, AiTwotoneFolderOpen } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
 import { cn } from "~/utils/cn";
 import { removeLastSlug } from "~/utils/functions";
+import { navFont } from "~/styles/fonts";
 
 interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {
   doc: Document;
@@ -24,7 +25,8 @@ export const NavLink = ({ doc, pathname, children, ...p }: Props) => {
       href={href}
       className={cn(
         "block whitespace-nowrap p-1 mb-2 text-center rounded-sm",
-        isSelected && "underline"
+        navFont.className,
+        isSelected ? "text-inherit" : "text-gray-500"
       )}
     >
       <div className={cn("flex gap-3 justify-start items-center")}>

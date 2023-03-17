@@ -10,7 +10,7 @@ export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
   const codeDocument = await getDocumentTree("content/code");
 
-  const headerHeight = "5rem";
+  const headerHeight = "4rem";
   return (
     <html lang="fr">
       <body
