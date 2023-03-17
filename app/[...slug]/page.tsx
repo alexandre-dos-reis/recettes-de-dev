@@ -6,6 +6,7 @@ import {
 } from "~/mdx/document";
 import { PageParamsProps } from "~/types/generics";
 import { cn } from "~/utils/cn";
+import Image from "next/image";
 
 export const generateStaticParams = async () => {
   // UGLY !
@@ -31,7 +32,14 @@ export default async ({
     >
       <header className="mt-10">
         {doc.frontmatter.image ? (
-          <img src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`} />
+          <div className="flex justify-center h-[200px] relative">
+            <Image
+              className="object-contain m-0"
+              src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`}
+              alt={doc.frontmatter.title}
+              fill
+            />
+          </div>
         ) : (
           <h1>{doc.frontmatter.title}</h1>
         )}
