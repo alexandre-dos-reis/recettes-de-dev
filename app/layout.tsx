@@ -1,5 +1,5 @@
-import "./globals.css";
-import "./prism-theme.css";
+import "~/styles/globals.css";
+import "~/styles/prism-theme.css";
 import { getDocumentTree } from "~/mdx/document";
 import { ReactNode } from "react";
 import { Nav } from "~/components/Nav";
@@ -25,14 +25,14 @@ export default async (p: { children: ReactNode }) => {
         />
         <div className={cn("grid grid-cols-[250px_auto]")}>
           <aside
-            className={cn("sticky p-10 overflow-y-auto")}
+            className={cn("sticky overflow-y-auto")}
             style={{
               top: headerHeight,
               height: `calc(100vh - ${headerHeight})`,
             }}
           >
             {cliDocument && codeDocument ? (
-              <Nav docs={[cliDocument, codeDocument]} />
+              <Nav docs={[cliDocument, codeDocument]} className="mb-10 mx-10" />
             ) : null}
           </aside>
           <main className={cn("")}>{p.children}</main>

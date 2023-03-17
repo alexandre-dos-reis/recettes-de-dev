@@ -4,7 +4,7 @@ import { Link } from "./Link";
 import { AiTwotoneFolderAdd, AiTwotoneFolderOpen } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
 import { cn } from "~/utils/cn";
-import { removeLastSlug } from "~/utils/functions";
+import { removeLastSlug } from "~/utils/functions.client";
 import { navFont } from "~/styles/fonts";
 
 interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {

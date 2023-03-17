@@ -2,7 +2,7 @@ import { z } from "zod";
 import { getSafeMdx } from "./compiled-mdx";
 import { readdir } from "node:fs/promises";
 import { getSafeFrontmatter } from "./frontmatter";
-import { asyncFileExists } from "./utils";
+import { asyncFileExists } from "~/utils/functions.server";
 
 const frontmatterDocumentSchema = z.object({
   title: z.string(),

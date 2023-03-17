@@ -14,7 +14,7 @@ export const Header = (p: Props) => {
         className={cn(
           "flex justify-between items-center h-full py-3 px-10",
           "text-gray-200",
-          "bg-black dark:bg-black"
+          "bg-slate-800 dark:bg-black"
         )}
       >
         <div className={cn(headerFont.className, "text-3xl")}>

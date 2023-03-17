@@ -1,10 +1,9 @@
 import { Document } from "~/mdx/document";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useSortDocument } from "~/hooks/useSortDocument";
-import { removeLastSlug } from "~/utils/functions";
+import { removeLastSlug } from "~/utils/functions.client";
 import { NavLink } from "./NavLink";
 import { cn } from "~/utils/cn";
-
 
 interface Props {
   doc: Document;
