@@ -9,7 +9,6 @@ import { Header } from "~/components/Header";
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
   const codeDocument = await getDocumentTree("content/code");
-
   const headerHeight = "4rem";
   return (
     <html lang="fr">
@@ -23,7 +22,7 @@ export default async (p: { children: ReactNode }) => {
           className={cn("sticky top-0 z-10")}
           style={{ height: headerHeight }}
         />
-        <div className={cn("grid grid-cols-[250px_auto]")}>
+        <div className={cn("grid grid-cols-[300px_auto]")}>
           <aside
             className={cn("sticky overflow-y-auto")}
             style={{
