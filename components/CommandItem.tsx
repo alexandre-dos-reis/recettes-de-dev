@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { monoFont } from "~/styles/fonts";
 import { cn } from "~/utils/cn";
 
 interface Props {
@@ -15,7 +16,10 @@ export const CommandItem = (p: Props) => (
         className={cn(
           "bg-slate-800",
           "dark:bg-black dark:border-gray-600",
-          "border whitespace-nowrap overflow-x-auto overflow-y-hidden font-mono rounded-lg text-gray-100 p-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-300"
+          "border whitespace-nowrap overflow-x-auto overflow-y-hidden rounded-lg",
+          "text-gray-100 p-2",
+          "scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-300",
+          monoFont.className
         )}
       >
         <span className="text-gray-500">{p.env ?? "$"}</span> {p.i}

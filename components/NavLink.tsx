@@ -5,7 +5,7 @@ import { AiTwotoneFolderAdd, AiTwotoneFolderOpen } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
 import { cn } from "~/utils/cn";
 import { removeLastSlug } from "~/utils/functions.client";
-import { navFont } from "~/styles/fonts";
+import { monoFont } from "~/styles/fonts";
 
 interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {
   doc: Document;
@@ -31,7 +31,7 @@ export const NavLink = ({
       href={href}
       className={cn(
         "block whitespace-nowrap p-1 mb-2 text-center rounded-sm",
-        navFont.className,
+        monoFont.className,
         isSelected ? "text-inherit" : "text-gray-500"
       )}
     >
