@@ -1,11 +1,14 @@
-import { Url } from "next/dist/shared/lib/router/router";
 import { ComponentPropsWithRef } from "react";
 import { Document } from "~/mdx/document";
 import { Link } from "./Link";
+import { AiTwotoneFolderAdd, AiTwotoneFolderOpen } from "react-icons/ai";
+import { BsDot } from "react-icons/bs";
+import { cn } from "~/utils/cn";
+import { removeLastSlug } from "~/utils/functions";
 
 interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {
   doc: Document;
-  pathname?: string;
+  pathname: string;
 }
 
 export const NavLink = ({ doc, pathname, children, ...p }: Props) => {
@@ -13,18 +16,29 @@ export const NavLink = ({ doc, pathname, children, ...p }: Props) => {
   const hasChildren = doc.children ? true : false;
   const href =
     isSelected && hasChildren ? doc.slug.replace(doc.node, "") : doc.slug;
+  const isChildSelected = !hasChildren && removeLastSlug(pathname) === doc.slug;
 
   return (
     <Link
       {...p}
       href={href}
-      className={`block whitespace-nowrap border p-1 border-black mb-2 text-center rounded-sm ${
-        isSelected ? "underline" : ""
-      }`}
+      className={cn(
+        "block whitespace-nowrap p-1 mb-2 text-center rounded-sm",
+        isSelected && "underline"
+      )}
     >
-      {children}
-      {doc.children ? "> " : ""}
-      {doc.frontmatter.nav ?? doc.frontmatter.title}
+      <div className={cn("flex gap-3 justify-start items-center")}>
+        {doc.children ? (
+          isSelected || isChildSelected ? (
+            <AiTwotoneFolderOpen className={cn("text-xl")} />
+          ) : (
+            <AiTwotoneFolderAdd className={cn("text-xl")} />
+          )
+        ) : (
+          <BsDot className={cn("text-xl")} />
+        )}
+        {doc.frontmatter.nav ?? doc.frontmatter.title}
+      </div>
     </Link>
   );
 };

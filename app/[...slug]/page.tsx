@@ -5,6 +5,7 @@ import {
   getRecursiveSlugs,
 } from "~/mdx/document";
 import { PageParamsProps } from "~/types/generics";
+import { cn } from "~/utils/cn";
 
 export const generateStaticParams = async () => {
   // UGLY !
@@ -20,7 +21,14 @@ export default async ({
 }: PageParamsProps<typeof generateStaticParams>) => {
   const doc = await getDocumentBySlug(params.slug);
   return (
-    <article className="max-w-2xl mx-auto prose prose-h1:text-center prose-code:before:hidden prose-code:after:hidden">
+    <article
+      className={cn(
+        "max-w-2xl mx-auto",
+        "prose prose-h1:text-center",
+        "prose-code:before:hidden prose-code:after:hidden",
+        "dark:prose-invert"
+      )}
+    >
       <header className="mt-10">
         {doc.frontmatter.image ? (
           <img src={`${ENV.IMAGE_URL}/${doc.frontmatter.image}`} />
@@ -33,7 +41,9 @@ export default async ({
         <nav>
           <ul>
             {doc.headings.map((h) => (
-              <li key={h.value} className={`${h.depth}`}>{h.value}</li>
+              <li key={h.value} className={`${h.depth}`}>
+                {h.value}
+              </li>
             ))}
           </ul>
         </nav>
