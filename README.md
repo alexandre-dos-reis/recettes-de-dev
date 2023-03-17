@@ -10,11 +10,9 @@
 
 ## Todos
 
-- [ ] Use unified ecosystem to optimize the nav tree and mdx serialize during build and dev, use:
-  - [to-vfile](https://github.com/vfile/to-vfile)
-  - [vfile-matter](https://github.com/vfile/vfile-matter#readme)
-  - [@mdx-js/mdx](https://github.com/mdx-js/mdx/tree/main/packages/mdx) [serialize func](https://github.com/hashicorp/next-mdx-remote/blob/main/src/serialize.ts)
-  - [emark-headings](https://github.com/vcarl/remark-headings)
+- Build a remark plugin to gather commandItem via a classname, example:
+  - https://github.com/vcarl/remark-headings/blob/main/index.ts
+  
 - [ ] Turn markdown into a search api
   - https://www.npmjs.com/package/markdown-json
   - https://eindm.de/en/blog/fuzzy-search-nextjs-api-routes
