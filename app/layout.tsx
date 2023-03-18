@@ -22,7 +22,7 @@ export default async (p: { children: ReactNode }) => {
           className={cn("sticky top-0 z-10")}
           style={{ height: headerHeight }}
         />
-        <div className={cn("grid grid-cols-[300px_auto]")}>
+        <div className={cn("grid grid-cols-[20vw_auto_20vw]")}>
           <aside
             className={cn("sticky overflow-y-auto")}
             style={{
@@ -34,7 +34,7 @@ export default async (p: { children: ReactNode }) => {
               <Nav docs={[cliDocument, codeDocument]} className="mb-10 mx-10" />
             ) : null}
           </aside>
-          <main className={cn("")}>{p.children}</main>
+          {p.children}
         </div>
       </body>
     </html>

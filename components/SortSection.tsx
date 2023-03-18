@@ -8,7 +8,7 @@ export const SortSection = () => {
     <div
       className={cn(
         "sticky top-0",
-        "pt-10 flex pb-10  gap-5 justify-center z-20",
+        "pt-10 flex pb-10 gap-5 justify-center z-20",
         "bg-slate-100 dark:bg-[#111]"
       )}
     >
