@@ -12,11 +12,13 @@ export const CommandItem = (p: Props) => (
   <section className="not-prose mb-10 w-full rounded-lg">
     <div className="mb-3">{p.children}</div>
     <div className="flex items-center gap-3">
+      {/* Todo, need to add copy */}
       <code
         className={cn(
           "bg-slate-800",
           "dark:bg-black dark:border-gray-600",
           "border whitespace-nowrap overflow-x-auto overflow-y-hidden rounded-lg",
+          "w-full", // Optional !
           "text-gray-100 p-2",
           "scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-300",
           monoFont.className

@@ -62,7 +62,14 @@ export default async ({
             <h3 className="font-bold mb-3">Sur cette page</h3>
             <ul className="text-sm text-gray-500">
               {doc.headings.map((h) => (
-                <li key={h.value} className={`${h.depth} mb-2`}>
+                <li
+                  key={h.value}
+                  className={cn(
+                    h.depth,
+                    "mb-2",
+                    "hover:text-gray-700 hover:dark:text-gray-400"
+                  )}
+                >
                   <a href={`#${createSlug(h.value)}`}>{h.value}</a>
                 </li>
               ))}
