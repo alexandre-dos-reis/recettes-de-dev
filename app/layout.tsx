@@ -7,6 +7,7 @@ import { cn } from "~/utils/cn";
 import { Header } from "~/components/Header";
 import { LayoutAside } from "~/components/LayoutAside";
 import { headerHeight } from "~/styles/constants";
+import { SortSection } from "~/components/SortSection";
 
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
@@ -26,6 +27,7 @@ export default async (p: { children: ReactNode }) => {
         />
         <div className={cn("grid grid-cols-[20vw_auto_20vw]")}>
           <LayoutAside>
+            <SortSection />
             {cliDocument && codeDocument ? (
               <Nav docs={[cliDocument, codeDocument]} className="mb-10 mx-10" />
             ) : null}

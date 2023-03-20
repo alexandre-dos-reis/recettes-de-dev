@@ -53,7 +53,7 @@ export default async ({
       </main>
       <LayoutAside>
         {doc.headings.length > 0 ? (
-          <>
+          <div className="pt-10">
             <h3 className="font-bold mb-3">Sur cette page</h3>
             <ul className="text-sm text-gray-500">
               {doc.headings.map((h) => (
@@ -69,7 +69,7 @@ export default async ({
                 </li>
               ))}
             </ul>
-          </>
+          </div>
         ) : null}
       </LayoutAside>
     </>

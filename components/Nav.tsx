@@ -20,18 +20,15 @@ export const Nav = ({ docs, ...p }: Props) => {
   const sortDocs = useSortDocument();
 
   return (
-    <>
-      <SortSection />
-      <nav {...p}>
-        {memoedDocs.sort(sortDocs).map((d) => (
-          <NavNode
-            key={d.id}
-            doc={d}
-            position={0}
-            pathname={pathNameWithoutSlash || ""}
-          />
-        ))}
-      </nav>
-    </>
+    <nav {...p}>
+      {memoedDocs.sort(sortDocs).map((d) => (
+        <NavNode
+          key={d.id}
+          doc={d}
+          position={0}
+          pathname={pathNameWithoutSlash || ""}
+        />
+      ))}
+    </nav>
   );
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { FaSortNumericDown, FaSortAlphaDown } from "react-icons/fa";
 import { cn } from "~/utils/cn";
 import { navSortState } from "~/utils/store";
