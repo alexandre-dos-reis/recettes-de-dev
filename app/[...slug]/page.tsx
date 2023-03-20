@@ -8,6 +8,7 @@ import { PageParamsProps } from "~/types/generics";
 import { cn } from "~/utils/cn";
 import Image from "next/image";
 import { createSlug } from "~/utils/functions.server";
+import { LayoutAside } from "~/components/LayoutAside";
 export const generateStaticParams = async () => {
   // UGLY !
   // RangeError: Maximum call stack size exceeded on 404...
@@ -21,7 +22,7 @@ export default async ({
   params,
 }: PageParamsProps<typeof generateStaticParams>) => {
   const doc = await getDocumentBySlug(params.slug);
-  const headerHeight = "4rem";
+
   return (
     <>
       <main
@@ -50,13 +51,7 @@ export default async ({
           <main className="max-w-2xl mx-auto">{doc.content}</main>
         </article>
       </main>
-      <aside
-        className="sticky overflow-y-auto pt-10"
-        style={{
-          top: headerHeight,
-          height: `calc(100vh - ${headerHeight})`,
-        }}
-      >
+      <LayoutAside>
         {doc.headings.length > 0 ? (
           <>
             <h3 className="font-bold mb-3">Sur cette page</h3>
@@ -65,8 +60,8 @@ export default async ({
                 <li
                   key={h.value}
                   className={cn(
-                    h.depth,
                     "mb-2",
+                    h.depth === 3 && "ml-3",
                     "hover:text-gray-700 hover:dark:text-gray-400"
                   )}
                 >
@@ -76,7 +71,7 @@ export default async ({
             </ul>
           </>
         ) : null}
-      </aside>
+      </LayoutAside>
     </>
   );
 };

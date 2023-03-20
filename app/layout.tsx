@@ -5,11 +5,13 @@ import { ReactNode } from "react";
 import { Nav } from "~/components/Nav";
 import { cn } from "~/utils/cn";
 import { Header } from "~/components/Header";
+import { LayoutAside } from "~/components/LayoutAside";
+import { headerHeight } from "~/styles/constants";
 
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
   const codeDocument = await getDocumentTree("content/code");
-  const headerHeight = "4rem";
+
   return (
     <html lang="fr">
       <body
@@ -23,17 +25,11 @@ export default async (p: { children: ReactNode }) => {
           style={{ height: headerHeight }}
         />
         <div className={cn("grid grid-cols-[20vw_auto_20vw]")}>
-          <aside
-            className={cn("sticky overflow-y-auto")}
-            style={{
-              top: headerHeight,
-              height: `calc(100vh - ${headerHeight})`,
-            }}
-          >
+          <LayoutAside>
             {cliDocument && codeDocument ? (
               <Nav docs={[cliDocument, codeDocument]} className="mb-10 mx-10" />
             ) : null}
-          </aside>
+          </LayoutAside>
           {p.children}
         </div>
       </body>

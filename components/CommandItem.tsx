@@ -12,7 +12,7 @@ export const CommandItem = (p: Props) => (
   <section className="not-prose mb-10 w-full rounded-lg">
     <div className="mb-3">{p.children}</div>
     <div className="flex items-center gap-3">
-      {/* Todo, need to add copy */}
+      {/* Todo, add copy */}
       <code
         className={cn(
           "bg-slate-800",
