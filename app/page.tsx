@@ -10,7 +10,7 @@ export default async () => {
         <span className={cn(headerFont.className, "mx-3 text-5xl")}>
           Recettes de dev !
         </span>
-        🍳
+        🍳 🦞
       </h1>
       <div className="flex justify-center">
         <img
