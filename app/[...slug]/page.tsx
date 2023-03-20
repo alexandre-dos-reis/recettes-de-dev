@@ -9,6 +9,7 @@ import { cn } from "~/utils/cn";
 import Image from "next/image";
 import { createSlug } from "~/utils/functions.server";
 import { LayoutAside } from "~/components/LayoutAside";
+import { Main } from "~/components/Main";
 export const generateStaticParams = async () => {
   // UGLY !
   // RangeError: Maximum call stack size exceeded on 404...
@@ -25,16 +26,9 @@ export default async ({
 
   return (
     <>
-      <main
-        className={cn(
-          "prose prose-h1:text-center",
-          "prose-code:before:hidden prose-code:after:hidden",
-          "dark:prose-invert",
-          "max-w-2xl mx-auto w-full"
-        )}
-      >
+      <Main>
         <article>
-          <header className="mt-10">
+          <header>
             {doc.frontmatter.image ? (
               <div className="flex justify-center h-[200px] relative">
                 <Image
@@ -50,7 +44,7 @@ export default async ({
           </header>
           <main className="max-w-2xl mx-auto">{doc.content}</main>
         </article>
-      </main>
+      </Main>
       <LayoutAside>
         {doc.headings.length > 0 ? (
           <div className="pt-10">
