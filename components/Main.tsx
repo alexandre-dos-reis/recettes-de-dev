@@ -46,6 +46,18 @@ export const Main = (p: { children: ReactNode }) => {
             Lisez le guide.
           </Link>
         </p>
+
+        <hr />
+
+        <p className="text-center">
+          Créé par{" "}
+          <Link
+            className={cn("text-gray-800 dark:text-gray-400")}
+            href="https://alexandre-dosreis.me"
+          >
+            Alexandre Dos Reis
+          </Link>
+        </p>
       </footer>
     </main>
   );
