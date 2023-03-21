@@ -20,7 +20,7 @@ export default async () => {
       </div>
       <p>
         Nous vous proposons quelques recettes 📖 sur le devops, le développement et
-        la CLI que nous avons confectionné 🍜 avec amour 💘 durant nos longues
+        la CLI que nous avons confectionné 🍜 avec soin ✨ durant nos longues
         d'heures passées devant les lignes de code et le terminal. 💻
       </p>
       <p>
