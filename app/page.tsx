@@ -6,11 +6,11 @@ export default async () => {
   return (
     <Main>
       <h1 className="mt-12">
-        Bienvenue sur
+        🦐 Bienvenue sur
         <span className={cn(headerFont.className, "mx-3 text-5xl")}>
           Recettes de dev !
         </span>
-        🍳 🦞
+        🍳
       </h1>
       <div className="flex justify-center">
         <img
