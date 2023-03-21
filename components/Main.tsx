@@ -20,7 +20,7 @@ export const Main = (p: { children: ReactNode }) => {
           Aidez-nous à améliorer le site ! 👌
         </h2>
         <p className="text-center">
-          Vous avez repéré une coquille ou quelques chose d'obscur ?<br />
+          Vous avez repéré une coquille ou quelque chose d'obscur ?<br />
           <Link
             className={cn("text-gray-800 dark:text-gray-400")}
             href="https://github.com/alexandre-dos-reis/recettes-de-dev/issues/new"
