@@ -41,7 +41,7 @@ export const Main = (p: { children: ReactNode }) => {
           Vous ne savez pas comment contribuer ?<br />
           <Link
             className={cn("text-gray-800 dark:text-gray-400")}
-            href="https://github.com/alexandre-dos-reis"
+            href="https://github.com/alexandre-dos-reis/recettes-de-dev"
           >
             Lisez le guide.
           </Link>
