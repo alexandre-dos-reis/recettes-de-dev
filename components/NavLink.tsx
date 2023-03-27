@@ -13,6 +13,8 @@ interface Props extends Omit<ComponentPropsWithRef<typeof Link>, "href"> {
   isSelected: boolean;
 }
 
+const iconCn = cn("text-xl shrink-0");
+
 export const NavLink = ({
   doc,
   pathname,
@@ -38,12 +40,12 @@ export const NavLink = ({
       <div className={cn("flex gap-3 justify-start items-center")}>
         {doc.children ? (
           isSelected || isChildSelected ? (
-            <AiTwotoneFolderOpen className={cn("text-xl")} />
+            <AiTwotoneFolderOpen className={iconCn} />
           ) : (
-            <AiTwotoneFolderAdd className={cn("text-xl")} />
+            <AiTwotoneFolderAdd className={iconCn} />
           )
         ) : (
-          <BsDot className={cn("text-xl")} />
+          <BsDot className={cn(iconCn)} />
         )}
         {doc.frontmatter.nav ?? doc.frontmatter.title}
       </div>

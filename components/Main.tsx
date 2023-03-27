@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { cn } from "~/utils/cn";
+import { ENV } from "~/utils/env";
 import { Link } from "./Link";
 
 export const Main = (p: { children: ReactNode }) => {
@@ -23,7 +24,7 @@ export const Main = (p: { children: ReactNode }) => {
           Vous avez repéré une coquille ou quelque chose d'obscur ?<br />
           <Link
             className={cn("text-gray-800 dark:text-gray-400")}
-            href="https://github.com/alexandre-dos-reis/recettes-de-dev/issues/new"
+            href={`${ENV.GITHUB_REPO}/issues/new`}
           >
             Créer une Issue.
           </Link>
@@ -32,7 +33,7 @@ export const Main = (p: { children: ReactNode }) => {
           Vous souhaitez contribuez au site ?<br />
           <Link
             className={cn("text-gray-800 dark:text-gray-400")}
-            href="https://github.com/alexandre-dos-reis/recettes-de-dev/pulls"
+            href={`${ENV.GITHUB_REPO}/pulls`}
           >
             Créez une Pull Request.
           </Link>
@@ -41,7 +42,7 @@ export const Main = (p: { children: ReactNode }) => {
           Vous ne savez pas comment contribuer ?<br />
           <Link
             className={cn("text-gray-800 dark:text-gray-400")}
-            href="https://github.com/alexandre-dos-reis/recettes-de-dev"
+            href={`${ENV.GITHUB_REPO}`}
           >
             Lisez le guide.
           </Link>
