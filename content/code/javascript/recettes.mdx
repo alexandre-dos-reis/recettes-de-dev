@@ -1,0 +1,29 @@
+---
+sort: 99
+title: Recettes
+---
+
+## Ne pas utiliser de boucle `foreach` avec les promesses.
+
+A ne jamais faire !
+
+```js
+items.foreach(async (i) => {
+  await i.someAsyncFunc();
+});
+```
+
+Mais plutôt :
+
+```js
+await Promise.all(items.map(async (i) => {
+    await i.someAsyncFunc();
+  }));
+```
+
+### Sources
+
+- [How to invalidate array of sluges in Next.js?](https://stackoverflow.com/questions/71807293/how-to-invalidate-array-of-sluges-in-next-js)
+- [How do i make javascript loop wait for each iteration of loop to finish before starting the next?](https://stackoverflow.com/questions/69734110/how-do-i-make-javascript-loop-wait-for-each-iteration-of-loop-to-finish-before-s)
+- [Node.js getaddrinfo ENOTFOUND only when requesting with node-fetch](https://github.com/node-fetch/node-fetch/issues/449)
+- [What is the difference between async/await forEach and Promise.all + map](https://stackoverflow.com/questions/68026591/what-is-the-difference-between-async-await-foreach-and-promise-all-map)
