@@ -4,17 +4,19 @@ title: Installer Rust
 nav: installation
 ---
 
+# Installer Rust sur Linux ou MacOs
+
 <C i={`curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh`}>
   Installe Rust sur Linux ou MacOS
 </C>
-
-<C i={`rustup self uninstall`}>Désinstaller Rust</C>
 
 <C i={`xcode-select --install`}>
   Installe Xcode sur MacOS, utile pour les crates utilisant du code écrit en C.
 </C>
 
 Les utilisateurs de Linux doivent généralement installer GCC ou Clang, selon la documentation de leur distribution. Par exemple, si vous utilisez Ubuntu, vous pouvez installer le package `build-essential`.
+
+## Dépannage
 
 <C i={`rustc --version`}>Pour vérifier si Rust est correctement installé.</C>
 
@@ -25,3 +27,12 @@ Si vous voyez ces informations, vous avez installé Rust avec succès ! Si vous 
 <C i={`echo $PATH`}>Affiche la variable `$PATH`.</C>
 
 Si tout est correct et que Rust ne fonctionne toujours pas, il existe un certain nombre d'endroits où vous pouvez obtenir de l'aide. Découvrez comment entrer en contact avec d'autres Rustacés (un surnom idiot que nous appelons nous-mêmes) sur (la page de la communauté)[https://www.rust-lang.org/community].
+
+## Mise à jour et désinstallation
+
+<C i={`rustup update`}>
+  Une fois Rust installé via `rustup`, la mise à jour vers une nouvelle version
+  est facile.
+</C>
+
+<C i={`rustup self uninstall`}>Pour désinstaller Rust et rustup</C>
