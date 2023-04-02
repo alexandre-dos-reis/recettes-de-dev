@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const CommandItem = (p: Props) => (
-  <section className="not-prose mb-10 w-full rounded-lg">
+  <section className="mb-10 w-full rounded-lg">
     {p.children ? <div className="mb-3">{p.children}</div> : null}
     <div className="flex items-center gap-3">
       {/* Todo, add copy */}

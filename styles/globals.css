@@ -4,6 +4,6 @@
 
 @layer base {
     p > code {
-        @apply prose-invert border p-1 rounded bg-slate-800 text-white dark:bg-black dark:border-gray-600
+        @apply prose-invert border p-1 rounded bg-gray-500 text-white dark:border-gray-400
     }
 }
