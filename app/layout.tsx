@@ -14,7 +14,8 @@ export default async (p: { children: ReactNode }) => {
   const codeDocument = await getDocumentTree("content/code");
 
   return (
-    <html lang="fr">
+    // Usefull for not getting headings behind the header
+    <html lang="fr" className="scroll-pt-20">
       <body
         className={cn(
           "bg-slate-100 text-gray-900 fill-gray-900",
