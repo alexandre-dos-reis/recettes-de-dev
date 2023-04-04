@@ -4,7 +4,7 @@ title: Bases
 nav: bases
 ---
 
-Vim est un éditeur de texte, c’est-à-dire un logiciel permettant la manipulation de fichiers texte. Il est directement inspiré de vi dont il est le clone le plus populaire. Chaque commande est préfixé par le mode auquel il appartient.
+Voici quelques commandes de bases.
 
 <C i={`h, j, k, l`} env={`[NORMAL]`}>Déplace le curseur respectivement à gauche, en bas, en haut et à droite.</C>
 
@@ -19,6 +19,10 @@ Vim est un éditeur de texte, c’est-à-dire un logiciel permettant la manipula
 <C i={`I`} env={`[NORMAL]`}>Place le curseur en début de ligne et active le mode `INSERT`.</C>
 
 <C i={`A`} env={`[NORMAL]`}>Place le curseur en fin de ligne et active le mode `INSERT`.</C>
+
+<C i={`o`} env={`[NORMAL]`}>Ajoute une nouvelle ligne en dessous de la ligne courante et bascule en mode `INSERT`</C>
+
+<C i={`O`} env={`[NORMAL]`}>Ajoute une nouvelle ligne au dessus de la ligne courante et bascule en mode `INSERT`</C>
 
 <C i={`f<lettre>`} env={`[NORMAL]`}>Place le curseur sur la prochaine &#60;lettre&#62;.</C>
 
