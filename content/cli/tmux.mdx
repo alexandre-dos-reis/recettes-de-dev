@@ -5,6 +5,14 @@ title: tmux
 
 Tmux est un multiplexeur de terminaux libre en mode texte. Il permet d'utiliser plusieurs terminaux virtuels dans une seule fenêtre de terminal ou une session sur un terminal distant. Tmux peut gérer plusieurs sessions contenant des fenêtres, elle-même divisées en panneaux. [tmux cheat sheet](https://tmuxcheatsheet.com/)
 
+## Générale
+
+## Session
+
+## fenêtre
+
+## Panneau
+
 <C i={`~/.tmux.conf`}>Emplacement du fichier de configuration.</C>
 
 <C i={`tmux -V`}>Renvoi la version courante.</C>
@@ -27,6 +35,10 @@ Tmux est un multiplexeur de terminaux libre en mode texte. Il permet d'utiliser 
 
 <C i={`[PREFIX] + s`} env={`[TMUX]`}>
   Ouvre un menu avec toutes les sessions en cours.
+</C>
+
+<C i={`[PREFIX] + $`} env={`[TMUX]`}>
+  Renomme la session
 </C>
 
 <C i={`[PREFIX] + ([CTRL + R])`} env={`[TMUX]`}>
