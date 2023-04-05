@@ -6,7 +6,30 @@ nav: mouvements
 
 Les mouvements Vim sont à différencier de l'éditeur Vim. Il existe pour tous les IDEs modernes des extensions Vim qui permetent d'obtenir les mêmes mouvements que dans l'éditeur Vim.
 
+## Anatomie d'un mouvement
+
 Voici l'anatomie d'un mouvement: `COMMAND` `COUNT` `MOTION`
+
+### COMMAND définition
+
+Une `COMMAND` est une action de type:
+
+- Suppression
+- Copier
+- Coller
+- Selectionner
+
+### COUNT définition
+
+`COUNT` représente une nombre utilisé par le clavier numérique.
+
+### MOTION définition
+
+`Motion` représente le mouvement du curseur, par exemple:
+
+- Les touches de déplacements basiques `j,k,l,m`.
+- `w` parcourir tous les mots de gauche à droite.
+- `b` inverse de `w`.
 
 Voici une sélection des mouvements utiles pour apprendre vim.
 
