@@ -7,15 +7,19 @@ Tmux est un multiplexeur de terminaux libre en mode texte. Il permet d'utiliser 
 
 ## Générale
 
-## Session
-
-## fenêtre
-
-## Panneau
-
 <C i={`~/.tmux.conf`}>Emplacement du fichier de configuration.</C>
 
 <C i={`tmux -V`}>Renvoi la version courante.</C>
+
+<C i={`tmux list-keys`}>Liste les raccourcis actuels</C>
+
+<C i={`Ctrl-b`}>
+  Connue comme le `PREFIX` ou `r` permettant d'activer d'autres commandes relatives à
+  TMUX. Cette combinaison est accessible uniquement à l'intérieur d'une instance
+  Tmux et peut être changée pour plus de convenance.
+</C>
+
+## Session
 
 <C i={`tmux new -s ma-session`}>Crée une nouvelle session.</C>
 
@@ -26,12 +30,6 @@ Tmux est un multiplexeur de terminaux libre en mode texte. Il permet d'utiliser 
 </C>
 
 <C i={`tmux detach`}>Détache la session courante et libère le terminal.</C>
-
-<C i={`Ctrl-b`}>
-  Connue comme le `PREFIX` permettant d'activer d'autres commandes relatives à
-  TMUX. Cette combinaison est accessible uniquement à l'intérieur d'une instance
-  Tmux et peut être changée pour plus de convenance.
-</C>
 
 <C i={`[PREFIX] + s`} env={`[TMUX]`}>
   Ouvre un menu avec toutes les sessions en cours.
@@ -44,3 +42,8 @@ Tmux est un multiplexeur de terminaux libre en mode texte. Il permet d'utiliser 
 <C i={`[PREFIX] + ([CTRL + R])`} env={`[TMUX]`}>
   Restaure toutes les sessions, fenêtres et panneaux.
 </C>
+
+## fenêtre
+
+## Panneau
+
