@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-    p > code {
-        @apply prose-invert border p-1 rounded bg-gray-500 text-white dark:border-gray-400
-    }
+  p > code,
+  li > code {
+    @apply prose-invert border p-1 rounded bg-gray-500 text-white dark:border-gray-400;
+  }
 }
