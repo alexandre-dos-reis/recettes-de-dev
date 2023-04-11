@@ -23,8 +23,8 @@ export default async (p: { children: ReactNode }) => {
         )}
       >
         <Header
-          className={cn("sticky top-0 z-10")}
           style={{ height: headerHeight }}
+          className={cn("sticky top-0 z-10")}
         />
         <div className={cn("grid grid-cols-[20vw_auto_20vw]")}>
           <LayoutAside>
