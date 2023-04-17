@@ -6,6 +6,6 @@
   p > code,
   section > div > code,
   li > code {
-    @apply prose-invert border p-1 rounded bg-gray-400 dark:bg-gray-800 text-white dark:border-gray-600;
+    @apply prose-invert border p-1 rounded bg-gray-500 dark:bg-gray-800 text-white dark:border-gray-600;
   }
 }
