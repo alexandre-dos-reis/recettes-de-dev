@@ -26,6 +26,10 @@ Tmux est un multiplexeur de terminaux libre en mode texte. Il permet d'utiliser 
 
 <C i={`tmux new -s ma-session`}>Crée une nouvelle session.</C>
 
+<C i={`[PREFIX] + :new -s ma-session`} env={`[TMUX]`}>
+Crée une nouvelle session en étant déjà dans une session Tmux et permet de lui donner un nom.
+</C>
+
 <C i={`tmux ls`}>Affiche toutes les session en cours.</C>
 
 <C i={`tmux attach -t ma-session`}>
