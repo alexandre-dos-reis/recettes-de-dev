@@ -58,6 +58,8 @@ nav: ufw
   Spécifie un sous-réseau d'adresse IP.
 </C>
 
+<C i={`ufw allow from 127.0.0.1 to 127.0.0.1 port 5000`} env={`#`}>Autorise les communications locales sur le port 5000.</C>
+
 <C i={`ufw allow in on eth0 to any port 80`} env={`#`}>
   Spécifier une règle sur la carte réseau `eth0`.
 </C>

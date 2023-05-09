@@ -5,4 +5,43 @@ title: chezmoi
 
 Gérez vos fichiers dotfiles sur plusieurs machines diverses, en toute sécurité.
 
+## Demarrage rapide
+
 <C i={`chezmoi init`}>Initialise `chezmoi`. Cela créera un nouveau dépôt local git dans ~/.local/share/chezmoi où `chezmoi` stockera son état.. Par défaut, `chezmoi` ne modifie que les fichiers de la copie de travail.</C>
+
+<C i={`chezmoi add ~/.bashrc`}>Ajoute un fichier dans le repo surveillé par chezmoi.</C>
+
+<C i={`chezmoi diff`}>Affiche les changements que chezmoi va effectuer.</C>
+
+<C i={`chezmoi -v apply`}>Applique les changements</C>
+
+Puis, on enregistre nos changements:
+
+```
+chezmoi cd
+git add .
+git commit -m 'Initial commit'
+```
+
+Il faut créer une repo sur github appele `dotfiles` et pousser nos changements:
+
+```
+git remote add origin https://github.com/$GITHUB_USERNAME/dotfiles.git
+git branch -M main
+git push -u origin main
+exit
+```
+
+## Editer un fichier
+
+Il y a plusieurs manieres de modifier les fichiers avec chezmoi.
+
+1. Utiliser `chezmoi edit $FILE`. Cela ouvrira le fichier dans votre editeur. Pour plus de facilite, utilisez `chezmoi edit --apply $FILE` pour appliquer les changemenets quand vous quittez l'editeur, ou `chezmoi edit --watch $FILE` pour appliquer les changements lorsque le fichier est sauvagarder.
+
+2. Use chezmoi cd and edit the files in the source directory directly. Run chezmoi diff to see what changes would be made, and chezmoi apply to make the changes.
+
+3. If your editor supports opening directories, run chezmoi edit with no arguments to open the source directory.
+
+4. Edit the file in your home directory, and then either re-add it by running chezmoi add $FILE or chezmoi re-add.
+
+5. Edit the file in your home directory, and then merge your changes with source state by running chezmoi merge $FILE.
