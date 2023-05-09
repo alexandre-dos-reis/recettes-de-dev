@@ -8,6 +8,7 @@ import { Header } from "~/components/Header";
 import { LayoutAside } from "~/components/LayoutAside";
 import { headerHeight } from "~/styles/constants";
 import { SortSection } from "~/components/SortSection";
+import { Search } from "~/components/Search";
 
 export default async (p: { children: ReactNode }) => {
   const cliDocument = await getDocumentTree("content/cli");
@@ -26,6 +27,8 @@ export default async (p: { children: ReactNode }) => {
           style={{ height: headerHeight }}
           className={cn("sticky top-0 z-10")}
         />
+
+        <Search />
         <div className={cn("grid grid-cols-[20vw_auto_20vw]")}>
           <LayoutAside>
             <SortSection />
