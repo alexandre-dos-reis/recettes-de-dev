@@ -1,0 +1,14 @@
+---
+sort: 5
+title: Ansible Vault
+nav: vault
+---
+
+Ansible Vault est un des nombreux outils propose par Ansible. Vault est une mecanisme dé chiffrement permettant de ne pas exposer des données sensibles au public, très utile pour la conservation dans les dépōts Git. 
+
+<C i={`ansible-vault encrypt secrets.yml`}>Permet de chiffrer le fichier `secrets.yml`.</C>
+
+<C i={`ansible-vault decrypt secrets.yml`}>Permet de dechiffrer le fichier `secrets.yml`.</C>
+
+<C i={`ansible-vault edit secrets.yml`}>Ouvre le fichier `secrets.yml` dans un éditeur pour modification mais ne déchiffre pas le fichier. Utile pour ne pas oublier de le rechiffrer ensuite.</C>
+
