@@ -1,8 +1,18 @@
 ---
-sort: 60
+sort: 5
 title: Docker Swarm
 nav: swarm
 ---
+
+Docker swarm est un mode particulier de docker, ce mode est inclus par default dans l'installation de docker. Bien que docker-compose permet de deployer une infrastructure complete, il n'est pas fait pour la production, en effet il ne dispose pas de haute disponibilite, ni de redemarrage automatique de conteneurs plantes ou de scalling. Docker Swarm permet d'obtenir ses avantages.
+
+Docker Swarm inclut:
+
+- Healthchecks et redemarrage automatique de conteneurs malsain.
+- Execution parallele de conteneurs a travers plusieurs nodes pour une haute disponibilite avec repartition de charge.
+- Rolling updates when you are ready to deploy an updated stack
+- Mise a jour intelligente quand une stack est prete a etre deployee
+- Utilise le meme fichier que docker compose en ajountant des fonctions propre.
 
 <C i={`docker swarm init`}>Initialise l'hôte en mode swarm, par défaut ce noeud devient leader.</C>
 
