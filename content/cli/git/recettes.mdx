@@ -21,3 +21,11 @@ title: Recettes
 <C i={`git branch -d ma-branche`}>Supprime la branche locale</C>
 <C i={`git push origin --delete ma-branche`}>Supprime la branche distante.</C>
 
+## Cueillir un fichier depuis n'importe quel commit
+
+<C i={`git cherry-pick -n <commit-hash>`}>Recupere toutes les modifications depuis un commit.</C>
+
+Effectuer toutes les modifications necessaires...
+
+<C i={`git checkout HEAD <path>`}></C>
+<C i={`git commit ...`}></C>
