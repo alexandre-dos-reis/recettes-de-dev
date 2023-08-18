@@ -1,0 +1,14 @@
+
+---
+sort: 10
+title: Recettes
+---
+
+## Backup de volumes 
+
+
+
+docker run --rm --volumes-from lg-db -v $(pwd):/backup busybox tar cvfz /backup/lg-db-data.tar /var/lib/postgresql/data
+
+<C i={`docker run --rm --volumes-from CONTAINER -v $(pwd):/backup busybox tar cvfz /backup/your-backup.tar PATH-IN-CONTAINER
+`}>Monte tous les volumes d'un conteneur dans un conteneur temporaire, puis cree une archive dans le chemin courant de l'hote.</C>
