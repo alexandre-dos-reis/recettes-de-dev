@@ -5,6 +5,11 @@ title: chezmoi
 
 Gérez vos fichiers dotfiles sur plusieurs machines diverses, en toute sécurité.
 
+Quelques definitions
+
+- Le `source directory` est la source de verite.
+
+
 ## Demarrage rapide
 
 <C i={`chezmoi init`}>Initialise `chezmoi`. Cela créera un nouveau dépôt local git dans ~/.local/share/chezmoi où `chezmoi` stockera son état.. Par défaut, `chezmoi` ne modifie que les fichiers de la copie de travail.</C>
@@ -34,11 +39,11 @@ exit
 
 ## Editer un fichier
 
-Il y a plusieurs manieres de modifier les fichiers avec chezmoi.
+Il y a plusieurs méthodes pour mettre à jour les `dotfiles`.
 
-1. Utiliser `chezmoi edit $FILE`. Cela ouvrira le fichier dans votre editeur. Pour plus de facilite, utilisez `chezmoi edit --apply $FILE` pour appliquer les changemenets quand vous quittez l'editeur, ou `chezmoi edit --watch $FILE` pour appliquer les changements lorsque le fichier est sauvagarder.
+1. Utiliser `chezmoi edit $FILE`. Cela ouvrira le fichier dans votre editeur. Pour plus de facilite, utilisez `chezmoi edit --apply $FILE` pour appliquer les changements quand vous quittez l'editeur, ou `chezmoi edit --watch $FILE` pour appliquer les changements lorsque le fichier est sauvegarder.
 
-2. Use chezmoi cd and edit the files in the source directory directly. Run chezmoi diff to see what changes would be made, and chezmoi apply to make the changes.
+2. Use `chezmoi cd` and edit the files in the source directory directly. Run `chezmoi diff` to see what changes would be made, and `chezmoi apply` to make the changes.
 
 3. If your editor supports opening directories, run chezmoi edit with no arguments to open the source directory.
 
