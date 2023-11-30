@@ -11,7 +11,7 @@ export const Main = (p: { children: ReactNode }) => {
         "prose-code:before:hidden prose-code:after:hidden",
         "dark:prose-invert",
         "max-w-2xl mx-auto w-full",
-        "my-10"
+        "my-10",
       )}
     >
       {p.children}

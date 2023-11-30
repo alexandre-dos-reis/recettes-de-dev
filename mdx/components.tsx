@@ -1,4 +1,4 @@
-import { CommandItem } from "~/components/CommandItem";
+import CommandItem from "~/components/CommandItem";
 import { AutoLinkHeading, HTMLHeading } from "~/components/AutoLinkHeading";
 import { Link } from "~/components/Link";
 

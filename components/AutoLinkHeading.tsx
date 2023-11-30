@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, useState } from "react";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { cn } from "~/utils/cn";
 import { AiOutlineLink } from "react-icons/ai";
 import { createSlug } from "~/utils/functions.server";
@@ -28,7 +28,7 @@ export const AutoLinkHeading = ({
               "relative",
               p.type === "h3" && "top-[3px] left-1",
               "text-gray-400 hover:text-gray-900",
-              "dark:text-gray-700 dark:hover:text-gray-200"
+              "dark:text-gray-700 dark:hover:text-gray-200",
             )}
           />
         </a>
