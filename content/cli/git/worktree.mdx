@@ -16,6 +16,8 @@ echo "gitdir: ./.bare" > .git
     Ajouter une branche au worktree.
 </C>
 
-<C i={`git worktree add -b <nouvelle-branche> <dossier>`}>
-    Creer une nouvelle branche au worktree.
+git worktree add -b feature-branch origin/main ../feature-branch
+
+<C i={`git worktree add -b <feature-branch> <branche-cible> <dossier>`}>
+    Creer une nouvelle branche au worktree depuis une branche cible en precisant le chemin du dossier.
 </C>
