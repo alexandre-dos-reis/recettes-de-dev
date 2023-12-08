@@ -1,0 +1,21 @@
+---
+sort: 1000
+title: git worktree
+nav: worktree
+---
+
+## Mise en place d'un depot `worktree`.
+
+```
+mkdir project && cd project
+git clone --bare git@github.com:user/project.git .bare
+echo "gitdir: ./.bare" > .git
+```
+
+<C i={`git worktree add <branche> <dossier>`}>
+    Ajouter une branche au worktree.
+</C>
+
+<C i={`git worktree add -b <nouvelle-branche> <dossier>`}>
+    Creer une nouvelle branche au worktree.
+</C>
