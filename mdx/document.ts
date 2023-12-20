@@ -22,7 +22,7 @@ export interface Document {
 
 const createDocument = (
   path: string,
-  frontmatter: z.infer<typeof frontmatterDocumentSchema>
+  frontmatter: z.infer<typeof frontmatterDocumentSchema>,
 ): Document => {
   const arraySlug = path.replace(".mdx", "").replace("/index", "").split("/");
   arraySlug.shift();
@@ -44,19 +44,22 @@ export const getDocumentTree = async (directory: string) => {
       document.children = (
         await content
           .filter((x) => x !== "index.mdx")
-          .reduce(async (acc, file) => {
-            const path = `${directory}/${file}`;
-            const document = path.endsWith(".mdx")
-              ? await getPublishedDocument(path)
-              : await getDocumentTree(path);
+          .reduce(
+            async (acc, file) => {
+              const path = `${directory}/${file}`;
+              const document = path.endsWith(".mdx")
+                ? await getPublishedDocument(path)
+                : await getDocumentTree(path);
 
-            if (!document) {
-              return acc; // Document is a draft, skipping...
-            }
+              if (!document) {
+                return acc; // Document is a draft, skipping...
+              }
 
-            // The file is ready to be shown, document is valid...
-            return (await acc).concat(document);
-          }, Promise.resolve([] as Document[]))
+              // The file is ready to be shown, document is valid...
+              return (await acc).concat(document);
+            },
+            Promise.resolve([] as Document[]),
+          )
       ).sort((a, b) => (a.frontmatter?.sort || 0) - (b.frontmatter?.sort || 0));
       return document;
     }
@@ -67,7 +70,7 @@ export const getDocumentTree = async (directory: string) => {
 const getPublishedDocument = async (filename: string) => {
   const frontmatter = await getSafeFrontmatter(
     filename,
-    frontmatterDocumentSchema
+    frontmatterDocumentSchema,
   );
 
   if (frontmatter.draft) {
@@ -87,7 +90,7 @@ export const getDocumentBySlug = async (slugArray: string[]) => {
 
   return await getSafeMdx(
     `content/${slug}/index.mdx`,
-    frontmatterDocumentSchema
+    frontmatterDocumentSchema,
   );
 };
 
@@ -95,7 +98,7 @@ export type Slugs = { slug: string[] }[];
 
 export const getRecursiveSlugs = (
   command: Document,
-  slugs: Slugs = []
+  slugs: Slugs = [],
 ): Slugs => {
   slugs.push({ slug: command.slug.split("/") });
   command.children?.map((c) => {
