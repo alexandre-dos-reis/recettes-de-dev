@@ -1,0 +1,14 @@
+---
+sort: 100
+title: Recettes
+---
+
+## Filtrer par un tableau de jsonb
+
+```sql
+with flattened_query as (
+  select id, unnest(my_array_col) as "my_jsonb_col" from my_table
+)
+
+select id, my_jsonb_col from flattened_query where my_jsonb_col->'key' = 'my value';
+```
