@@ -12,3 +12,11 @@ with flattened_query as (
 
 select id, my_jsonb_col from flattened_query where my_jsonb_col->'key' = 'my value';
 ```
+
+## Pattern Matching
+
+### Filter par nombres decimaux
+
+```sql
+select * from table where number ~ '(^\d+(\.\d{1,2}))';
+```
